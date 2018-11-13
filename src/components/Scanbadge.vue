@@ -1,6 +1,7 @@
 <template>
   <VLayout row-wrap>
     <VLayout column>
+      <div v-if="!employeeId">
       <canvas id="signaturepad" ref="signaturepad" width="400" height="200"/>
       <!--
         <v-img
@@ -77,6 +78,22 @@
       </VFlex>
       </VFlex>
     </VLayout>
+    </div>
+    <VFlex sm10 md8 lg6 mx-5>
+        <VFlex v-if="!signed">
+          <VFlex  class="blue white--text">
+            Pressing continue will place the tablet in your custody and clock you in to work. 
+          </VFlex>
+          <VSpacer/>
+           <VBtn v-show="sigFinished && select" block
+                color="blue-grey"
+                @click.native="completeProcess()"
+                class="white--text">
+            Submit
+          </VBtn>
+        </VFlex>
+    </VFlex>
+
   </VLayout>
 </template>
 
@@ -89,6 +106,12 @@ export default {
   page: {
     title: 'Log in',
   },
+  props:[{
+    checkingIn:{
+      default: false,
+      type: boolean
+    }
+  }]
   components: {
     QrcodeStream,
     QrcodeDropZone,
@@ -101,7 +124,10 @@ export default {
       printedName: null,
       namePrinted: false,
       signature: null,
+      checkingIn: false,
+      checkingOut: false,
       select: null,
+      employeeId: null,
       paused: false,
       ready: false,
       signed: false,
@@ -125,6 +151,9 @@ export default {
     this.signaturePad = signaturePad
   },
   methods: {
+    completeProcess(){
+
+    },
     setActivePerson(item){
       console.log(item)
     },
@@ -134,7 +163,7 @@ export default {
     },
     onDecode(scanInfo) {
     console.log(scanInfo)
-
+        this.employeeId = scanInfo
     },
     async submitSignature() {
       var _signature = await this.signaturePad.toDataURL('image/jpeg')
