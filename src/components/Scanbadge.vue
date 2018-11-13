@@ -132,7 +132,10 @@ export default {
     onSigned() {
       this.sigFinished = true
     },
-    onDecode() {},
+    onDecode() {
+    console.log('code')
+
+    },
     async submitSignature() {
       var _signature = await this.signaturePad.toDataURL('image/jpeg')
       this.signaturePad.off()
