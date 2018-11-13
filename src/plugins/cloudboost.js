@@ -3,7 +3,7 @@ import {  AmplifyEventBus } from 'aws-amplify-vue'
 import store from '../store'
 
 CB.CloudApp.init(
-  'http://localhost:4730',
+  'http://192.168.1.10:4730',
   'devApp',
   '417c9820-6eeb-42a3-b59b-a8eed67b71ca'
 )

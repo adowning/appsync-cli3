@@ -11,7 +11,7 @@
       <VFlex/>
       <VFlex sm10 md8 lg6 mx-5>
         <VFlex v-if="!signed">
-          <VFlex  class="blue white--text">
+          <VFlex  class="blue white--text" mb-5>
             This device is not checked out and will need to be checked out in
             order to be used or moved its current location. By signing, you
             acknoweldge this piece of equipment is in your sole care and custody
@@ -19,10 +19,10 @@
             will be responsible until the device is transfered to another
             employee or checked in at the end of your shift.
           </VFlex>
-          <VSpacer/>
+
           <VFlex xs12 sm6 d-flex>
             <VSelect  v-model="select"
-                      label="Employee" :items="employeeList" item-text="name"
+                      label="" :items="employeeList" item-text="name"
             >
             </VSelect>
           </VFlex>
@@ -41,7 +41,7 @@
           </VFlex>
           <VBtn v-show="sigFinished && select" block
                 color="blue-grey"
-                @click.native="signed = true"
+                @click.native="submitSignature"
                 class="white--text"
           >
             Submit
@@ -77,22 +77,37 @@
         </VFlex> -->
       </VFlex>
       </VFlex>
-    </VLayout>
     </div>
+  
     <VFlex sm10 md8 lg6 mx-5>
-        <VFlex v-if="!signed">
+        <VFlex v-if="signed">
+          <div v-if="!phoneConfirm">
           <VFlex  class="blue white--text">
             Pressing continue will place the tablet in your custody and clock you in to work. 
           </VFlex>
           <VSpacer/>
            <VBtn v-show="sigFinished && select" block
                 color="blue-grey"
-                @click.native="completeProcess()"
+                @click.native="loginEmployee()"
                 class="white--text">
             Submit
           </VBtn>
+          </div>
+          <div v-if="phoneConfirm">
+          <VFlex  class="blue white--text">
+            Pressing continue will place the tablet in your custody and clock you in to work. 
+          </VFlex>
+          <VSpacer/>
+           <VBtn v-show="sigFinished && select" block
+                color="blue-grey"
+                @click.native="loginEmployee()"
+                class="white--text">
+            Submit
+          </VBtn>
+          </div>
         </VFlex>
     </VFlex>
+    </VLayout>
 
   </VLayout>
 </template>
@@ -109,9 +124,9 @@ export default {
   props:[{
     checkingIn:{
       default: false,
-      type: boolean
+      type: Boolean
     }
-  }]
+  }],
   components: {
     QrcodeStream,
     QrcodeDropZone,
@@ -166,6 +181,7 @@ export default {
         this.employeeId = scanInfo
     },
     async submitSignature() {
+      this.signed = true
       var _signature = await this.signaturePad.toDataURL('image/jpeg')
       this.signaturePad.off()
       var checkoutForm = {
@@ -174,11 +190,12 @@ export default {
         signature: _signature,
         device: this.$deviceId,
       }
-      this.$Hub.dispatch(
-        'auth',
-        { event: 'signIn', data: checkoutForm },
-        'Auth'
-      )
+      
+      // this.$Hub.dispatch(
+      //   'auth',
+      //   { event: 'signIn', data: checkoutForm },
+      //   'Auth'
+      // )
     },
     goHome() {
       this.$router.push('/')
@@ -191,22 +208,22 @@ export default {
         name: 'asdf',
         password: 'asdfasdf',
       }
-      this.$Amplify.Auth.signIn(badge.name, badge.password)
-        .then(data => {
-          if (data && data.signInUserSession) {
-            //  store.commit('setUser', data)
-            this.$AmplifyEventBus.$emit('authState', 'signedIn')
-            this.$router.push('/crewList')
-            this.$PubSub.publish('employeeUpdated', {
-              msg: `${data.username} has clocked in.`,
-            })
-          }
-        })
-        .catch(() => {
-          this.loginErrors.push('Invalid badge')
-          //    this.$store.commit('setUser', null)
-          return null
-        })
+      // this.$Amplify.Auth.signIn(badge.name, badge.password)
+      //   .then(data => {
+      //     if (data && data.signInUserSession) {
+      //       //  store.commit('setUser', data)
+      //       this.$AmplifyEventBus.$emit('authState', 'signedIn')
+      //       this.$router.push('/crewList')
+      //       this.$PubSub.publish('employeeUpdated', {
+      //         msg: `${data.username} has clocked in.`,
+      //       })
+      //     }
+      //   })
+      //   .catch(() => {
+      //     this.loginErrors.push('Invalid badge')
+      //     //    this.$store.commit('setUser', null)
+      //     return null
+      //   })
     },
     scan() {
       var self = this

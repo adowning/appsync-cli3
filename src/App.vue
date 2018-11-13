@@ -14,7 +14,8 @@
         Test
       </router-link>
       <router-view />
-      <footer />
+      xxx
+      <Footer app/>
     </content>
   </div>
 </template>
@@ -49,23 +50,16 @@ export default {
   },
 }
 </script>
-<style>
-.footer {
-  /* Apply this to v-bottom-nav if necessary. */
-  margin-bottom: constant(safe-area-inset-bottom);
-  margin-bottom: env(safe-area-inset-bottom);
-}
-.v-bottom-nav {
-  /* Apply this to v-bottom-nav if necessary. */
-  margin-bottom: constant(safe-area-inset-bottom);
-  margin-bottom: env(safe-area-inset-bottom);
-}
-body {
+<style lang="stylus">
+
+.body {
   margin: 0;
   background-color: white;
+  padding-bottom:60px;   /* Height of the footer */
   padding-top: constant(safe-area-inset-top);
   padding-top: env(safe-area-inset-top);
 }
+/*
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -176,7 +170,6 @@ inputRow {
 .avatar-pic {
   max-height: 100px;
 }
-/* accordion */
 .message {
   max-width: 500px;
   margin-left: auto;
@@ -203,5 +196,5 @@ inputRow {
 }
 .message-content {
   padding: 20px;
-}
+}*/
 </style>

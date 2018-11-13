@@ -1,11 +1,11 @@
 <template>
-  <VFooter dark color="accent" height="auto">
+  <VFooter dark color="accent" height="auto" app>
     <VBtn class="mx-3 white--text" icon @click="drawer = !drawer">
       <VIcon size="32px">
         menu
       </VIcon>
     </VBtn>
-    <VNavigationDrawer v-model="drawer" light absolute temporary>
+    <VNavigationDrawer v-model="drawer" light temporary app>
       <VList class="pa-1">
         <VListTile avatar>
           <VListTileAvatar>
@@ -54,6 +54,22 @@ export default {
       { img: 'home.png', title: 'Employees', link: '/employee' },
     ],
   }),
+  mounted(){
+    console.log('yar')
+  }
 }
 </script>
-<style></style>
+<style lang="stylus">
+/* .footer {
+  margin-bottom: constant(safe-area-inset-bottom);
+  margin-bottom: env(safe-area-inset-bottom);
+}  */
+.v-footer {
+  position:absolute;
+   bottom:0;
+   width:100%;
+   height:60px;   /* Height of the footer */
+   background:#6cf !important;
+} 
+
+</style>
