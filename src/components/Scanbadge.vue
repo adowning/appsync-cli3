@@ -8,9 +8,9 @@
         aspect-ratio="1.7"/>
       -->
       <VFlex/>
-      <VFlex sm10 md8 lg6>
-        <VFlex v-if="!sigFinished">
-          <VFlex>
+      <VFlex sm10 md8 lg6 mx-5>
+        <VFlex v-if="!signed">
+          <VFlex  class="blue white--text">
             This device is not checked out and will need to be checked out in
             order to be used or moved its current location. By signing, you
             acknoweldge this piece of equipment is in your sole care and custody
@@ -38,29 +38,31 @@
           <VFlex>
             <canvas v-show="select" id="signaturepad" ref="signaturepad" width="600" height="200" />
           </VFlex>
-        
-          <VBtn v-show="sigFinished && printedName" @click.native="signed = true">
+          <VBtn v-show="sigFinished && select" block
+                color="blue-grey"
+                @click.native="signed = true"
+                class="white--text"
+          >
             Submit
           </VBtn>
         </VFlex>
-
-    
-        <VFlex v-if="sigFinished">
-          <QrcodeStream          
-            :v-if="checkoutForm && !scan && !paused && startScan"
-            @init="onInit"
-            @decode="onDecode"
-          />
-          <VBtn
-            block
-            color="blue-grey"
-            class="white--text"
-            @click.native="scan()"
-          >
-            Scan ID Badge
-          </VBtn>
-        </VFlex>
-        
+      </VFlex>
+     
+      <VFlex v-if="signed" sm10 md8 lg6 mx-5>
+        <QrcodeStream          
+          :v-if="checkoutForm && !scan && !paused && startScan"
+          @init="onInit"
+          @decode="onDecode"
+        />
+        <!-- <VBtn
+          block
+          color="blue-grey"
+          class="white--text"
+          @click.native="scan()"
+        >
+          Scan ID Badge
+        </VBtn> -->
+        <!--            
         <VFlex>
           <VBtn
             block
@@ -71,7 +73,8 @@
           >
             Cancel
           </VBtn>
-        </VFlex>
+        </VFlex> -->
+      </VFlex>
       </VFlex>
     </VLayout>
   </VLayout>
