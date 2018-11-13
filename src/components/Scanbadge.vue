@@ -132,8 +132,8 @@ export default {
     onSigned() {
       this.sigFinished = true
     },
-    onDecode() {
-    console.log('code')
+    onDecode(scanInfo) {
+    console.log(scanInfo)
 
     },
     async submitSignature() {
