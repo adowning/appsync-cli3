@@ -1,24 +1,36 @@
 import Vue from 'vue'
 import './plugins/vuetify'
+import './plugins/amplify'
+import CBPlugin from './plugins/cloudboost'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+import helpers from './helpers'
 import './registerServiceWorker'
-import Amplify, * as AmplifyModules from 'aws-amplify'
-import { AmplifyPlugin } from 'aws-amplify-vue'
-import aws_exports from './aws-exports'
-import { AmplifyEventBus } from 'aws-amplify-vue';
+import 'roboto-fontface/css/roboto/roboto-fontface.css'
+import 'material-design-icons-iconfont/dist/material-design-icons.css'
 
-Amplify.configure(aws_exports)
-Vue.use(AmplifyPlugin, AmplifyModules)
-Vue.config.productionTip = false
+Vue.use(CBPlugin)
+// import { Capacitor, Plugins, StatusBarStyle } from '@capacitor/core'
+// const { SplashScreen, StatusBar } = Plugins
 
-AmplifyEventBus.$on('authState', info => {
-  console.log(`Here is the auth event that was just emitted by an Amplify component: ${info}`)
-});
+// Vue.prototype.$platform = Capacitor.platform
+// if(Capacitor.platform != 'web'){
+//   StatusBar.setBackgroundColor({ color: helpers.env('INITIAL_STATUSBAR_COLOR') }).catch(helpers.err)
+//   StatusBar.setStyle({ style: StatusBarStyle.Light }).catch(helpers.err)
+//   SplashScreen.hide().catch(err=>{console.log(err)})
+// }
+
+Vue.prototype.$helpers = helpers
+// function onDeviceReady() {
+// console.log(Capacitor.platform)
 
 new Vue({
   router,
   store,
-  render: function (h) { return h(App) }
+  render: function(h) {
+    return h(App)
+  },
 }).$mount('#app')
+//  }
+//  document.addEventListener("deviceready", onDeviceReady, false);

@@ -1,0 +1,9 @@
+{
+    "bucketName": "andrewsstorage",
+    "authPolicyName": "s3_amplify_450a25cc",
+    "unauthPolicyName": "s3_amplify_450a25cc",
+    "authRoleName": "appsynccli3-20181110034252-authRole",
+    "unauthRoleName": "appsynccli3-20181110034252-unauthRole",
+    "authPermissions": "rw",
+    "unauthPermissions": ""
+}

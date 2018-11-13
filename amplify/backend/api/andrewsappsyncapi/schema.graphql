@@ -1,0 +1,23 @@
+type Todo @model {
+  id: ID!
+  name: String!
+  description: String
+}
+type Employee @model {
+  id: ID!
+  name: String!
+  timesheets: [Timesheet] @connection(name: "EmployeeTimesheets")
+}
+type Timesheet @model {
+  id: ID!
+  humanityTimeSheetId: String
+  start_date: AWSDate
+  start_time: AWSTime
+  start_datetime: AWSDateTime
+  start_timestamp: AWSTimestamp
+  end_date: AWSDate
+  end_time: AWSTime
+  end_datetime: AWSDateTime
+  end_timestamp: AWSTimestamp
+  employee: Employee @connection(name: "EmployeeTimesheets")
+}

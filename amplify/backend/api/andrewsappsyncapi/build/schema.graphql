@@ -1,0 +1,228 @@
+type Todo {
+  id: ID!
+  name: String!
+  description: String
+}
+
+type Employee {
+  id: ID!
+  name: String!
+  timesheets(filter: ModelTimesheetFilterInput, sortDirection: ModelSortDirection, limit: Int, nextToken: String): ModelTimesheetConnection
+}
+
+type Timesheet {
+  id: ID!
+  humanityTimeSheetId: String
+  start_date: AWSDate
+  start_time: AWSTime
+  start_datetime: AWSDateTime
+  start_timestamp: AWSTimestamp
+  end_date: AWSDate
+  end_time: AWSTime
+  end_datetime: AWSDateTime
+  end_timestamp: AWSTimestamp
+  employee: Employee
+}
+
+enum ModelSortDirection {
+  ASC
+  DESC
+}
+
+type ModelTodoConnection {
+  items: [Todo]
+  nextToken: String
+}
+
+input ModelStringFilterInput {
+  ne: String
+  eq: String
+  le: String
+  lt: String
+  ge: String
+  gt: String
+  contains: String
+  notContains: String
+  between: [String]
+  beginsWith: String
+}
+
+input ModelIDFilterInput {
+  ne: ID
+  eq: ID
+  le: ID
+  lt: ID
+  ge: ID
+  gt: ID
+  contains: ID
+  notContains: ID
+  between: [ID]
+  beginsWith: ID
+}
+
+input ModelIntFilterInput {
+  ne: Int
+  eq: Int
+  le: Int
+  lt: Int
+  ge: Int
+  gt: Int
+  contains: Int
+  notContains: Int
+  between: [Int]
+}
+
+input ModelFloatFilterInput {
+  ne: Float
+  eq: Float
+  le: Float
+  lt: Float
+  ge: Float
+  gt: Float
+  contains: Float
+  notContains: Float
+  between: [Float]
+}
+
+input ModelBooleanFilterInput {
+  ne: Boolean
+  eq: Boolean
+}
+
+input ModelTodoFilterInput {
+  id: ModelIDFilterInput
+  name: ModelStringFilterInput
+  description: ModelStringFilterInput
+  and: [ModelTodoFilterInput]
+  or: [ModelTodoFilterInput]
+  not: ModelTodoFilterInput
+}
+
+type Query {
+  getTodo(id: ID!): Todo
+  listTodos(filter: ModelTodoFilterInput, limit: Int, nextToken: String): ModelTodoConnection
+  getEmployee(id: ID!): Employee
+  listEmployees(filter: ModelEmployeeFilterInput, limit: Int, nextToken: String): ModelEmployeeConnection
+  getTimesheet(id: ID!): Timesheet
+  listTimesheets(filter: ModelTimesheetFilterInput, limit: Int, nextToken: String): ModelTimesheetConnection
+}
+
+input CreateTodoInput {
+  id: ID
+  name: String!
+  description: String
+}
+
+input UpdateTodoInput {
+  id: ID!
+  name: String
+  description: String
+}
+
+input DeleteTodoInput {
+  id: ID
+}
+
+type Mutation {
+  createTodo(input: CreateTodoInput!): Todo
+  updateTodo(input: UpdateTodoInput!): Todo
+  deleteTodo(input: DeleteTodoInput!): Todo
+  createEmployee(input: CreateEmployeeInput!): Employee
+  updateEmployee(input: UpdateEmployeeInput!): Employee
+  deleteEmployee(input: DeleteEmployeeInput!): Employee
+  createTimesheet(input: CreateTimesheetInput!): Timesheet
+  updateTimesheet(input: UpdateTimesheetInput!): Timesheet
+  deleteTimesheet(input: DeleteTimesheetInput!): Timesheet
+}
+
+type Subscription {
+  onCreateTodo: Todo @aws_subscribe(mutations: ["createTodo"])
+  onUpdateTodo: Todo @aws_subscribe(mutations: ["updateTodo"])
+  onDeleteTodo: Todo @aws_subscribe(mutations: ["deleteTodo"])
+  onCreateEmployee: Employee @aws_subscribe(mutations: ["createEmployee"])
+  onUpdateEmployee: Employee @aws_subscribe(mutations: ["updateEmployee"])
+  onDeleteEmployee: Employee @aws_subscribe(mutations: ["deleteEmployee"])
+  onCreateTimesheet: Timesheet @aws_subscribe(mutations: ["createTimesheet"])
+  onUpdateTimesheet: Timesheet @aws_subscribe(mutations: ["updateTimesheet"])
+  onDeleteTimesheet: Timesheet @aws_subscribe(mutations: ["deleteTimesheet"])
+}
+
+type ModelEmployeeConnection {
+  items: [Employee]
+  nextToken: String
+}
+
+input ModelEmployeeFilterInput {
+  id: ModelIDFilterInput
+  name: ModelStringFilterInput
+  and: [ModelEmployeeFilterInput]
+  or: [ModelEmployeeFilterInput]
+  not: ModelEmployeeFilterInput
+}
+
+input CreateEmployeeInput {
+  id: ID
+  name: String!
+}
+
+input UpdateEmployeeInput {
+  id: ID!
+  name: String
+}
+
+input DeleteEmployeeInput {
+  id: ID
+}
+
+type ModelTimesheetConnection {
+  items: [Timesheet]
+  nextToken: String
+}
+
+input ModelTimesheetFilterInput {
+  id: ModelIDFilterInput
+  humanityTimeSheetId: ModelStringFilterInput
+  start_date: ModelStringFilterInput
+  start_time: ModelStringFilterInput
+  start_datetime: ModelStringFilterInput
+  start_timestamp: ModelIntFilterInput
+  end_date: ModelStringFilterInput
+  end_time: ModelStringFilterInput
+  end_datetime: ModelStringFilterInput
+  end_timestamp: ModelIntFilterInput
+  and: [ModelTimesheetFilterInput]
+  or: [ModelTimesheetFilterInput]
+  not: ModelTimesheetFilterInput
+}
+
+input CreateTimesheetInput {
+  id: ID
+  humanityTimeSheetId: String
+  start_date: AWSDate
+  start_time: AWSTime
+  start_datetime: AWSDateTime
+  start_timestamp: AWSTimestamp
+  end_date: AWSDate
+  end_time: AWSTime
+  end_datetime: AWSDateTime
+  end_timestamp: AWSTimestamp
+  timesheetEmployeeId: ID
+}
+
+input UpdateTimesheetInput {
+  id: ID!
+  humanityTimeSheetId: String
+  start_date: AWSDate
+  start_time: AWSTime
+  start_datetime: AWSDateTime
+  start_timestamp: AWSTimestamp
+  end_date: AWSDate
+  end_time: AWSTime
+  end_datetime: AWSDateTime
+  end_timestamp: AWSTimestamp
+  timesheetEmployeeId: ID
+}
+
+input DeleteTimesheetInput {
+  id: ID
+}

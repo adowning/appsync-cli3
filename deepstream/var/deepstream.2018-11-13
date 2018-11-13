@@ -1,0 +1,20 @@
+{"event":"INFO","level":"info","message":"logger ready","timestamp":"2018-11-13T00:00:42.163Z"}
+{"event":"INFO","level":"info","message":"deepstream version: 1.0.3","timestamp":"2018-11-13T00:00:42.165Z"}
+{"event":"INFO","level":"info","message":"configuration file loaded from ./conf/config.yml","timestamp":"2018-11-13T00:00:42.165Z"}
+{"event":"INFO","level":"info","message":"cache ready","timestamp":"2018-11-13T00:00:42.166Z"}
+{"event":"INFO","level":"info","message":"authenticationHandler ready: none","timestamp":"2018-11-13T00:00:42.166Z"}
+{"event":"INFO","level":"info","message":"storage ready","timestamp":"2018-11-13T00:00:42.183Z"}
+{"event":"INFO","level":"info","message":"permissionHandler ready: valve permissions loaded from /home/ash/Documents/temp/a-e/appsync-cli3/deepstream/conf/permissions.yml","timestamp":"2018-11-13T00:00:42.186Z"}
+{"event":"PLUGIN_ERROR","level":"error","message":"Error while initialising messageConnector: Error: read ECONNRESET","timestamp":"2018-11-13T00:00:42.338Z"}
+{"event":"INFO","level":"info","message":"logger ready","timestamp":"2018-11-13T00:02:02.148Z"}
+{"event":"INFO","level":"info","message":"deepstream version: 1.0.3","timestamp":"2018-11-13T00:02:02.151Z"}
+{"event":"INFO","level":"info","message":"configuration file loaded from ./conf/config.yml","timestamp":"2018-11-13T00:02:02.151Z"}
+{"event":"INFO","level":"info","message":"cache ready","timestamp":"2018-11-13T00:02:02.151Z"}
+{"event":"INFO","level":"info","message":"authenticationHandler ready: none","timestamp":"2018-11-13T00:02:02.151Z"}
+{"event":"INFO","level":"info","message":"storage ready","timestamp":"2018-11-13T00:02:02.169Z"}
+{"event":"INFO","level":"info","message":"messageConnector ready","timestamp":"2018-11-13T00:02:02.171Z"}
+{"event":"INFO","level":"info","message":"permissionHandler ready: valve permissions loaded from /home/ash/Documents/temp/a-e/appsync-cli3/deepstream/conf/permissions.yml","timestamp":"2018-11-13T00:02:02.172Z"}
+{"event":"INFO","level":"info","message":"Using ws websocket server","timestamp":"2018-11-13T00:02:02.174Z"}
+{"event":"INFO","level":"info","message":"Listening for browser connections on 0.0.0.0:6020","timestamp":"2018-11-13T00:02:02.174Z"}
+{"event":"INFO","level":"info","message":"Listening for tcp connections on 0.0.0.0:6021","timestamp":"2018-11-13T00:02:02.176Z"}
+{"event":"INFO","level":"info","message":"Deepstream started","timestamp":"2018-11-13T00:02:02.176Z"}

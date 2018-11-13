@@ -1,0 +1,52 @@
+{
+    "identityPoolName": "andrews_identitypool",
+    "allowUnauthenticatedIdentities": false,
+    "thirdPartyAuth": false,
+    "lambdaLogPolicy": "cognitoandrews_lambda_log_policy",
+    "openIdLambdaRoleName": "cognitoandrews_openid_lambda_role",
+    "openIdRolePolicy": "cognitoandrews_openid_pass_role_policy",
+    "openIdLambdaIAMPolicy": "cognitoandrews_openid_lambda_iam_policy",
+    "openIdLogPolicy": "cognitoandrews_openid_lambda_log_policy",
+    "userPoolName": "andrews_userpool",
+    "autoVerifiedAttributes": [
+        "phone_number"
+    ],
+    "mfaConfiguration": "ON",
+    "mfaTypes": [
+        "SMS Text Message"
+    ],
+    "roleName": "cognitoandrews_sns-role",
+    "roleExternalId": "cognitoandrews_role_external_id",
+    "policyName": "cognitoandrews-sns-policy",
+    "smsAuthenticationMessage": "Your authentication code is {####}",
+    "smsVerificationMessage": "Your verification code is {####}",
+    "emailVerificationSubject": "Your verification code",
+    "emailVerificationMessage": "Your verification code is {####}",
+    "defaultPasswordPolicy": true,
+    "passwordPolicyMinLength": "6",
+    "passwordPolicyCharacters": [],
+    "requiredAttributes": [
+        "phone_number"
+    ],
+    "userpoolClientName": "cognitoandrews_app_client",
+    "userpoolClientGenerateSecret": true,
+    "userpoolClientRefreshTokenValidity": 30,
+    "userpoolClientReadAttributes": [
+        "email"
+    ],
+    "mfaLambdaRole": "cognitoandrews_totp_lambda_role",
+    "mfaLambdaLogPolicy": "cognitoandrews_totp_lambda_log_policy",
+    "mfaPassRolePolicy": "cognitoandrews_totp_pass_role_policy",
+    "mfaLambdaIAMPolicy": "cognitoandrews_totp_lambda_iam_policy",
+    "userpoolClientLambdaRole": "cognitoandrews_userpoolclient_lambda_role",
+    "userpoolClientLogPolicy": "cognitoandrews_userpoolclient_lambda_log_policy",
+    "userpoolClientLambdaPolicy": "cognitoandrews_userpoolclient_lambda_iam_policy",
+    "userpoolClientSetAttributes": false,
+    "useDefault": "manual",
+    "authSelections": "identityPoolAndUserPool",
+    "resourceName": "cognitoandrews",
+    "unAuthRoleName": "appsynccli3-20181110034252-unauthRole",
+    "authRoleName": "appsynccli3-20181110034252-authRole",
+    "unAuthRoleArn": "arn:aws:iam::742705829810:role/appsynccli3-20181110034252-unauthRole",
+    "authRoleArn": "arn:aws:iam::742705829810:role/appsynccli3-20181110034252-authRole"
+}

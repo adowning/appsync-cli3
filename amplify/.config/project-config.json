@@ -1,0 +1,20 @@
+{
+    "projectName": "appsynccli3",
+    "projectPath": "/home/ash/Documents/temp/appsync-cli3",
+    "defaultEditor": "code",
+    "frontendHandler": {
+        "javascript": "/home/ash/.nvm/versions/node/v10.13.0/lib/node_modules/@aws-amplify/cli/node_modules/amplify-frontend-javascript"
+    },
+    "javascript": {
+        "framework": "vue",
+        "config": {
+            "SourceDir": "src",
+            "DistributionDir": "dist",
+            "BuildCommand": "npm run-script build",
+            "StartCommand": "npm run-script serve"
+        }
+    },
+    "providers": {
+        "awscloudformation": "/home/ash/.nvm/versions/node/v10.13.0/lib/node_modules/@aws-amplify/cli/node_modules/amplify-provider-awscloudformation"
+    }
+}
