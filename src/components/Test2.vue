@@ -1,6 +1,6 @@
 <template>
   <VLayout row-wrap>
-   <v-btn @click="scan">asdf</v-btn>
+   <v-btn @click="scan()">asdf</v-btn>
   </VLayout>
 </template>
 
@@ -39,6 +39,7 @@ export default {
   },
   methods: {
     scan(){
+      console.log('scan')
 // Start a scan. Scanning will continue until something is detected or
 // `QRScanner.cancelScan()` is called.
 QRScanner.scan(displayContents);
