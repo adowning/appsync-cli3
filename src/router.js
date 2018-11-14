@@ -59,7 +59,7 @@ const router = new Router({
       path: '/auth',
       name: 'auth',
       component: function () {
-        return import(/* webpackChunkName: "Test" */ './components/Scanbadge.vue')
+        return import(/* webpackChunkName: "Test" */ './components/Test2.vue')
       },
     },
     {
