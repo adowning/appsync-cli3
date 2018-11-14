@@ -18,6 +18,8 @@
         "plugins": {
             "cordova-plugin-whitelist": {}
         },
-        "platforms": []
+        "platforms": [
+            "android"
+        ]
     }
 }
