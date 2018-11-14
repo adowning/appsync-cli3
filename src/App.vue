@@ -10,8 +10,8 @@
       <router-link to="/profile">
         profile
       </router-link>
-      <router-link to="/test">
-        Test
+      <router-link to="/test2">
+        Test2
       </router-link>
       <router-view />
       xxx

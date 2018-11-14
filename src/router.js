@@ -68,10 +68,10 @@ const router = new Router({
       component: loadView('Home')
     },
     {
-      path: '/test',
-      name: 'test',
+      path: '/test2',
+      name: 'test2',
       component: function () {
-        return import(/* webpackChunkName: "Test" */ './components/Test/Test.vue')
+        return import(/* webpackChunkName: "Test" */ './components/Test2')
       },
       meta: { requiresAuth: true }
     },

@@ -1,121 +1,34 @@
 <template>
   <VLayout row-wrap>
-    <VLayout column>
-      <div v-if="!employeeId">
-      <canvas id="signaturepad" ref="signaturepad" width="400" height="200"/>
-      <!--
-        <v-img
-        src="../assets/logo.png"
-        aspect-ratio="1.7"/>
-      -->
-      <VFlex/>
-      <VFlex sm10 md8 lg6 mx-5>
-        <VFlex v-if="!signed">
-          <VFlex  class="blue white--text" mb-5>
-            This device is not checked out and will need to be checked out in
-            order to be used or moved its current location. By signing, you
-            acknoweldge this piece of equipment is in your sole care and custody
-            and you are responsible for loss or any damage to the device. You
-            will be responsible until the device is transfered to another
-            employee or checked in at the end of your shift.
-          </VFlex>
-
-          <VFlex xs12 sm6 d-flex>
-            <VSelect  v-model="select"
-                      label="" :items="employeeList" item-text="name"
-            >
-            </VSelect>
-          </VFlex>
-          <!--
-            <VFlex>
-              <VTextField
-                v-model="printedName"
-                placeholder="Enter full name"
-                outline
-              />
-            <v-btn  @click.native="namePrinted = true">Submit</v-btn>
-            </VFlex>
-          -->
-          <VFlex>
-            <canvas v-show="select" id="signaturepad" ref="signaturepad" width="600" height="200" />
-          </VFlex>
-          <VBtn v-show="sigFinished && select" block
-                color="blue-grey"
-                @click.native="submitSignature"
-                class="white--text"
-          >
-            Submit
-          </VBtn>
-        </VFlex>
-      </VFlex>
-     
-      <VFlex v-if="signed" sm10 md8 lg6 mx-5>
-        <QrcodeStream          
-          :v-if="checkoutForm && !scan && !paused && startScan"
-          @init="onInit"
-          @decode="onDecode"
-        />
-        <!-- <VBtn
-          block
-          color="blue-grey"
-          class="white--text"
-          @click.native="scan()"
-        >
-          Scan ID Badge
-        </VBtn> -->
-        <!--            
-        <VFlex>
-          <VBtn
-            block
-            color="green"
-            class="white--text"
-            fakeScan
-            @click.native="goHome()"
-          >
-            Cancel
-          </VBtn>
-        </VFlex> -->
-      </VFlex>
-      </VFlex>
-    </div>
-  
-    <VFlex sm10 md8 lg6 mx-5>
-        <VFlex v-if="signed">
-          <div v-if="!phoneConfirm">
-          <VFlex  class="blue white--text">
-            Pressing continue will place the tablet in your custody and clock you in to work. 
-          </VFlex>
-          <VSpacer/>
-           <VBtn v-show="sigFinished && select" block
-                color="blue-grey"
-                @click.native="loginEmployee()"
-                class="white--text">
-            Submit
-          </VBtn>
-          </div>
-          <div v-if="phoneConfirm">
-          <VFlex  class="blue white--text">
-            Pressing continue will place the tablet in your custody and clock you in to work. 
-          </VFlex>
-          <VSpacer/>
-           <VBtn v-show="sigFinished && select" block
-                color="blue-grey"
-                @click.native="loginEmployee()"
-                class="white--text">
-            Submit
-          </VBtn>
-          </div>
-        </VFlex>
-    </VFlex>
-    </VLayout>
-
+   <v-btn @click="scan">asdf</v-btn>
   </VLayout>
 </template>
 
 <script>
-import SignaturePad from 'signature_pad'
-import { mapState } from 'vuex'
-import { QrcodeStream, QrcodeDropZone, QrcodeCapture } from 'vue-qrcode-reader'
+// import { QrcodeStream, QrcodeDropZone, QrcodeCapture } from 'vue-qrcode-reader'
+// For the best user experience, make sure the user is ready to give your app
+// camera access before you show the prompt. On iOS, you only get one chance.
+ 
+QRScanner.prepare(onDone); // show the prompt
+ 
+function onDone(err, status){
+  if (err) {
+   // here we can handle errors and clean up any loose ends.
+   console.error(err);
+  }
+  if (status.authorized) {
+    // W00t, you have camera access and the scanner is initialized.
+    // QRscanner.show() should feel very fast.
+  } else if (status.denied) {
+   // The video preview will remain black, and scanning is disabled. We can
+   // try to ask the user to change their mind, but we'll have to send them
+   // to their device settings with `QRScanner.openSettings()`.
+  } else {
+    // we didn't get permission, but we didn't get permanently denied. (On
+    // Android, a denial isn't permanent unless the user checks the "Don't
+    // ask again" box.) We can ask again at the next relevant opportunity.
+  }
+}
 
 export default {
   page: {
@@ -128,136 +41,42 @@ export default {
     }
   }],
   components: {
-    QrcodeStream,
-    QrcodeDropZone,
-    QrcodeCapture
+    // QrcodeStream,
+    // QrcodeDropZone,
+    // QrcodeCapture
   },
 
   data() {
     return {
-      startScan: false,
-      printedName: null,
-      namePrinted: false,
-      signature: null,
-      checkingIn: false,
-      checkingOut: false,
-      select: null,
-      employeeId: null,
-      paused: false,
-      ready: false,
-      signed: false,
-      checkoutForm: null,
-      signaturePad: {},
-      items: [],
-      sigFinished: false,
     }
   },
   computed: {
-    ...mapState({
-      employeeList: state => state.employeeList
-    })
+  
   },
   mounted() {
-    const signaturePad = new SignaturePad(this.$refs.signaturepad, {
-      penColor: 'rgb(66, 133, 244)',
-      backgroundColor: 'rgb(245,245,245)',
-      onEnd: this.onSigned,
-    })
-    this.signaturePad = signaturePad
+ 
   },
   methods: {
-    completeProcess(){
+    scan(){
+// Start a scan. Scanning will continue until something is detected or
+// `QRScanner.cancelScan()` is called.
+QRScanner.scan(displayContents);
+ 
+function displayContents(err, text){
+  if(err){
+    // an error occurred, or the scan was canceled (error code `6`)
+  } else {
+    // The scan completed, display the contents of the QR code:
+    alert(text);
+  }
+}
+ 
+// Make the webview transparent so the video preview is visible behind it.
+QRScanner.show();
+// Be sure to make any opaque HTML elements transparent here to avoid
+// covering the video.
 
     },
-    setActivePerson(item){
-      console.log(item)
-    },
-    onInit() {},
-    onSigned() {
-      this.sigFinished = true
-    },
-    onDecode(scanInfo) {
-    console.log(scanInfo)
-        this.employeeId = scanInfo
-    },
-    async submitSignature() {
-      this.signed = true
-      var _signature = await this.signaturePad.toDataURL('image/jpeg')
-      this.signaturePad.off()
-      var checkoutForm = {
-        time: new Date(),
-        employee: this.printedName,
-        signature: _signature,
-        device: this.$deviceId,
-      }
-      
-      // this.$Hub.dispatch(
-      //   'auth',
-      //   { event: 'signIn', data: checkoutForm },
-      //   'Auth'
-      // )
-    },
-    goHome() {
-      this.$router.push('/')
-    },
-    /* eslint-disable-next-line */
-    async loginEmployee(_badge) {
-      this.loginErrors = []
-
-      var badge = {
-        name: 'asdf',
-        password: 'asdfasdf',
-      }
-      // this.$Amplify.Auth.signIn(badge.name, badge.password)
-      //   .then(data => {
-      //     if (data && data.signInUserSession) {
-      //       //  store.commit('setUser', data)
-      //       this.$AmplifyEventBus.$emit('authState', 'signedIn')
-      //       this.$router.push('/crewList')
-      //       this.$PubSub.publish('employeeUpdated', {
-      //         msg: `${data.username} has clocked in.`,
-      //       })
-      //     }
-      //   })
-      //   .catch(() => {
-      //     this.loginErrors.push('Invalid badge')
-      //     //    this.$store.commit('setUser', null)
-      //     return null
-      //   })
-    },
-    scan() {
-      var self = this
-      this.signed = true
-      /* eslint-disable-next-line */
-      // cordova.plugins.barcodeScanner.scan(
-      //   function(result) {
-      //     console.log(result)
-      //     self.loginEmployee(JSON.parse(result))
-      //   },
-      //   function(error) {
-      //     alert('Scanning failed: ' + error)
-      //   },
-      //   {
-      //     preferFrontCamera: false, // iOS and Android
-      //     showFlipCameraButton: true, // iOS and Android
-      //     showTorchButton: true, // iOS and Android
-      //     torchOn: false, //  Android, launch with the torch switched on (if available)
-      //     saveHistory: false, // Android, save scan history (default false)
-      //     prompt: 'Place ID badge inside the scan area', // Android
-      //     resultDisplayDuration: 0, // Android, display scanned text for X ms. 0 suppresses it entirely, default 1500
-      //     formats:
-      //       'DATA_MATRIX,UPC_A,UPC_E,EAN_8,EAN_13,CODE_39,CODE_93,CODE_128,CODABAR,ITF,RSS14,PDF_417,RSS_EXPANDED,MSI,AZTEC',
-      //     // all but PDF_417 and RSS_EXPANDED
-      //     orientation: 'portrait', // Android only (portrait|landscape), default unset so it rotates with the device
-      //     disableAnimations: true, // iOS
-      //     disableSuccessBeep: false, // iOS and Android
-      //   }
-      // )
-    },
-  },
-  onDestroy() {
-    console.log('destroying')
-    this.user = null
-  },
+  }
 }
 </script>
