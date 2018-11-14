@@ -1,10 +1,14 @@
 import Vue from 'vue'
 import Vuetify from 'vuetify/lib'
 import 'vuetify/src/stylus/app.styl'
-QRScanner.prepare(onDone); // show the prompt
 function onDeviceReady() {
+QRScanner.prepare(onDone); // show the prompt
  
 function onDone(err, status){
+  console.log('dr')
+  console.log('dr')
+  console.log('dr')
+  console.log('dr')
   if (err) {
    // here we can handle errors and clean up any loose ends.
    console.error(err);
