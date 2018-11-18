@@ -1,2 +1,4 @@
 export const UPDATE_USERLIST = "UPDATE_USERLIST";
 export const UPDATE_TIMESHEETS = "UPDATE_TIMESHEETS";
+export const USERLIST = "USERLIST";
+export const TIMESHEETS = "TIMESHEETS";
