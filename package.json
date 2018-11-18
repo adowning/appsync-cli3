@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.2.0",
+    "fingerprintjs2": "^1.8.6",
     "kuzzle-sdk": "^5.0.13",
     "register-service-worker": "^1.0.0",
     "roboto-fontface": "*",
