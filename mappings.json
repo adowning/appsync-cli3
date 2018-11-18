@@ -1,0 +1,9 @@
+{
+  "device": {
+    "deviceId": { "type": "text" },
+    "currentOwnerId": { "type": "text" },
+    "currentUserList": { "type": "json" },
+    "currentLocation": { "type": "geo_point" },
+    "lastUpdateTime": { "type": "date" }
+  }
+}
