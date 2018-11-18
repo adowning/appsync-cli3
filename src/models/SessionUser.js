@@ -20,9 +20,9 @@ export default () => {
     token: undefined,
     params: {},
     rights: []
-  }
+  };
 }
-
+/*
 {
   device:
   {
@@ -34,3 +34,15 @@ export default () => {
 
   }
 }
+{
+  "birthday" : { "type": "number"},
+  "birthmonth" : { "type": "number"},
+  "cellphone" : { "type": "number"},
+  "hiredate" : { "type": "date"},
+  "firstname" : { "type": "string"},
+  "lastname" : { "type": "string"},
+  "photo_url" : { "type": "string"},
+  "wage" : { "type": "number"},
+  "lastactive" : { "type": "date"},
+}
+*/
