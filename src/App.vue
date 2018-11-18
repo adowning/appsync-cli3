@@ -86,7 +86,8 @@ import "@fortawesome/fontawesome-free/css/all.css";
 
 window.jQuery = window.$ = require("jquery");
 // eslint-disable-next-line
-require('imports-loader?$=jquery!materialize-css/dist/js/materialize');
+require('imports-loader?$=jquery!materialize-css/dist/js/materialize')
+import { performSearchUsers } from "../../../services/kuzzleWrapper";
 
 export default {
   name: "KuzzleBackOffice",
@@ -121,6 +122,9 @@ export default {
       this.isOpen = false;
       this.deleteIsOpen = false;
     }
+  },
+  mounted() {
+    this.$store.dispatch(UPDATE_USERLIST, {});
   }
 };
 </script>
