@@ -7,7 +7,7 @@
             <div class="col s12">
               <h2 class="center-align logo">
                 <img
-                  src="../assets/andrews_logo.svg"
+                  src="../assets/andrews_spelledout.svg"
                   alt="Welcome to Andrews"
                   style="width: 30%"
                 />
@@ -39,12 +39,12 @@
 </style>
 
 <script>
-import LoginForm from "./Common/Login/Form";
+import LoginForm from './Common/Login/Form';
 // import EnvironmentSwitch from "./Common/Environments/EnvironmentsSwitch";
-import * as types from "../vuex/modules/common/routing/mutation-types";
+import * as types from '../vuex/modules/common/routing/mutation-types';
 
 export default {
-  name: "Login",
+  name: 'Login',
   components: {
     LoginForm
     // EnvironmentSwitch
@@ -53,7 +53,7 @@ export default {
     return {
       environmentId: null,
       signed: false
-    };
+    }
   },
 
   methods: {
@@ -62,22 +62,22 @@ export default {
       // After login, the index route is pushed to view router and the body overflow is
       // not set to his original state
       // see src/components/Materialize/Modale.vue#62
-      window.document.body.style.overflow = "visible";
+      window.document.body.style.overflow = 'visible';
 
       if (this.$store.getters.routeBeforeRedirect) {
-        this.$router.push({ name: this.$store.getters.routeBeforeRedirect });
+        this.$router.push({ name: this.$store.getters.routeBeforeRedirect })
       } else {
-        this.$router.push({ name: "Home" });
+        this.$router.push({ name: 'Home' })
       }
 
-      this.$store.commit(types.SET_ROUTE_BEFORE_REDIRECT, null);
+      this.$store.commit(types.SET_ROUTE_BEFORE_REDIRECT, null)
     },
     editEnvironment(id) {
-      this.$emit("environment::create", id);
+      this.$emit('environment::create', id)
     },
     deleteEnvironment(id) {
-      this.$emit("environment::delete", id);
+      this.$emit('environment::delete', id)
     }
   }
-};
+}
 </script>

@@ -8,7 +8,7 @@
               <img src="../../../assets/logo.svg" alt="Welcome to the Kuzzle Admin Console" style="width: 70%" />
             -->
             <img
-              src="../../../assets/andrews_logo.svg"
+              src="../../../assets/andrews_spelledout.svg"
               alt="Andrews Group"
               style="width: 30%"
             />
