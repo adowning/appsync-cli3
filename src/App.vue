@@ -91,7 +91,7 @@ import {
   // UPDATE_USERS,
   UPDATE_USERLIST,
   UPDATE_TIMESHEETS
-} from "./vuex/modules/users/kuzzle/mutation-types";
+} from "./vuex/modules/users/mutation-types";
 
 export default {
   name: "KuzzleBackOffice",
