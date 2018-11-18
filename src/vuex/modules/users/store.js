@@ -1,37 +1,42 @@
-import * as types from './mutation-types';
+import * as types from "./mutation-types";
 // import kuzzle from "../../services/kuzzle";
 import {
   performSearchUsers,
   performSearchTimesheets
-} from '../../../services/kuzzleWrapper';
+} from "../../../services/kuzzleWrapper";
 
 const state = {
   users: [],
   timeSheets: []
-}
+};
 
 const actions = {
   async [types.UPDATE_USERLIST]({ commit, dispatch }) {
-    var users = await performSearchUsers(null, null, {}, 50, [])
-    commit(types.USERLIST, users)
+    var users = await performSearchUsers(null, null, {}, 50, []);
+    commit(types.USERLIST, users);
   },
+  /*
+
+export const performSearchDocuments = ( collection, index, filters = {}, pagination = {}, sort = []
+)
+*/
   async [types.UPDATE_TIMESHEETS]({ commit, dispatch }) {
-    var timeSheets = await performSearchTimesheets({}, 50)
-    commit(types.TIMESHEETS, timeSheets)
+    var timeSheets = await performSearchTimesheets({}, 50);
+    commit(types.TIMESHEETS, timeSheets);
   }
-}
+};
 
 const mutations = {
   [types.USERLIST](state, data) {
-    state.users = data
+    state.users = data;
   },
   async [types.TIMESHEETS](state, data) {
-    state.timeSheets = data
+    state.timeSheets = data;
   }
-}
+};
 
 export default {
   state,
   mutations,
   actions
-}
+};
