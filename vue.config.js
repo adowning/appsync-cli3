@@ -2,7 +2,7 @@
 
 module.exports = {
   baseUrl: "/",
-  // outputDir: "server/public",
+  outputDir: "server/www/dist",
   lintOnSave: true,
   runtimeCompiler: false,
   configureWebpack: {
