@@ -1,9 +1,10 @@
 import * as types from "./mutation-types";
-import kuzzle from "../../services/kuzzle";
+// import kuzzle from "../../services/kuzzle";
 import kuzzleWrapper from "../../../services/kuzzleWrapper";
 
 const state = {
-  users: []
+  users: [],
+  timeSheets: []
 };
 
 export const mutations = {
@@ -11,8 +12,8 @@ export const mutations = {
     state.users = await kuzzleWrapper.performSearchUsers(
       null,
       null,
-      50,
       {},
+      50,
       []
     );
   },
