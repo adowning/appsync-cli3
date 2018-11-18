@@ -1,21 +1,20 @@
 import * as types from './mutation-types';
 import kuzzle from '../../services/kuzzle';
+import kuzzleWrapper from '../../../services/kuzzleWrapper';
 
 const state = {
   users: []
 }
 
 export const mutations = {
-  [types.SET_USERS](state) {
-    state.users = kuzzle.security.searchUsers(null, null, function(
-      error,
-      result
-    ) {
-      return result
-    });
+  async [types.UPDATE_USERLIST](state) {
+    state.users = await kuzzleWrapper.performSearchUsers()
   },
   [types.EMPTY_NOTIFICATION](state) {
     state.notifications = []
+  },
+  async [types.UPDATE_TIMESHEETS](state) {
+    state.timeSheets = await kuzzleWrapper.performSearchTimesheets()
   }
 }
 
