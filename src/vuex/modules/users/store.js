@@ -1,11 +1,11 @@
-import * as types from './mutation-types';
+import * as types from "./mutation-types";
 // import kuzzle from "../../services/kuzzle";
-import kuzzleWrapper from '../../../services/kuzzleWrapper';
+import kuzzleWrapper from "../../../services/kuzzleWrapper";
 
 const state = {
   users: [],
   timeSheets: []
-}
+};
 
 const actions = {
   async [types.UPDATE_USERLIST]({ commit, dispatch }, data) {
@@ -15,26 +15,26 @@ const actions = {
       {},
       50,
       []
-    )
-    commit(types.USERLIST, data)
+    );
+    commit(types.USERLIST, data);
   },
   async [types.UPDATE_TIMESHEETS]({ commit, dispatch }, data) {
-    state.timeSheets = await kuzzleWrapper.performSearchTimesheets({}, 50)
-    commit(types.TIMESHEETS, data)
+    state.timeSheets = await kuzzleWrapper.performSearchTimesheets({}, 50);
+    commit(types.TIMESHEETS, data);
   }
-}
+};
 
 const mutations = {
   [types.USERLIST](state, data) {
-    state.users = data
+    state.users = data;
   },
   async [types.TIMESHEETS](state, data) {
-    state.timeSheets = data
+    state.timeSheets = data;
   }
-}
+};
 
 export default {
   state,
   mutations,
   actions
-}
+};
