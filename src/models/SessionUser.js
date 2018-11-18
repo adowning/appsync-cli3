@@ -20,8 +20,8 @@ export default () => {
     token: undefined,
     params: {},
     rights: []
-  }
-};
+  };
+}
 /*
 {
   device:
@@ -36,16 +36,16 @@ export default () => {
 }
 {
   user id = id of doc = humanity id
-  "birthday" : { "type": "numeric"},
-  "birthmonth" : { "type": "numeric"},
-  "cellphone" : { "type": "numeric"},
+  "birthday" : { "type": "integer"},
+  "birthmonth" : { "type": "integer"},
+  "cellphone" : { "type": "integer"},
   "hiredate" : { "type": "date"},
   "firstname" : { "type": "string"},
   "lastname" : { "type": "string"},
   "photo_url" : { "type": "string"},
   "wage" : { "type": "number"},
   "lastactive" : { "type": "date"},
-
+}
   /* eventStamps are for each and everytime a change is made it gets recorded with the change
   eventstamsp record deviceId, time and geolocation if possible.
   break events are simply named eventstamps that get calculated, first is always out last is always in
@@ -57,8 +57,8 @@ export default () => {
   "startTime" : { "type": "date"},
   "endTime" : { "type": "date"},
   "breakEvents" : { "type": "object"},
-  "breakTimeTotal" : { "type": "numeric"},
-  "totalTime" : { "type": "numeric"},
+  "breakTimeTotal" : { "type": "integer"},
+  "totalTime" : { "type": "integer"},
   "approved" : { "type": "boolean"},
   "approvedBy" : { "type": "string"},
   "notes" : { "type": "object"},
