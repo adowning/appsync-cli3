@@ -9,7 +9,7 @@
             -->
             <img
               src="../../../assets/andrews_logo.svg"
-              alt="Welcome to the Kuzzle Admin Console"
+              alt="Andrews Group"
               style="width: 30%"
             />
           </h2>

@@ -5,8 +5,7 @@
         <h5>Checkout device</h5>
         <div class="divider"></div>
         <p class="message">
-          This device will need to be checked out in order to be used or moved
-          from its current location.
+          This device must be checked out in order to be used.
         </p>
       </div>
       <div v-if="startScan && inDevelopment">
