@@ -1,9 +1,9 @@
-import * as types from "./mutation-types";
-import kuzzle from "../../services/kuzzle";
+import * as types from './mutation-types';
+import kuzzle from '../../services/kuzzle';
 
 const state = {
   users: []
-};
+}
 
 export const mutations = {
   [types.SET_USERS](state) {
@@ -11,15 +11,15 @@ export const mutations = {
       error,
       result
     ) {
-      return result;
-    })
+      return result
+    });
   },
   [types.EMPTY_NOTIFICATION](state) {
-    state.notifications = [];
+    state.notifications = []
   }
-};
+}
 
 export default {
   state,
   mutations
-};
+}

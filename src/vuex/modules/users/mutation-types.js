@@ -1,1 +1,2 @@
-export const SET_USERS = "SET_USERS";
+export const UPDATE_USERLIST = "UPDATE_USERLIST";
+export const UPDATE_TIMESHEETS = "UPDATE_TIMESHEETS";

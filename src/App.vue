@@ -88,6 +88,11 @@ window.jQuery = window.$ = require("jquery");
 // eslint-disable-next-line
 require('imports-loader?$=jquery!materialize-css/dist/js/materialize')
 import { performSearchUsers } from "../../../services/kuzzleWrapper";
+import {
+  // UPDATE_USERS,
+  UPDATE_USERLIST,
+  UPDATE_TIMESHEETS
+} from "../../../vuex/modules/users/kuzzle/mutation-types";
 
 export default {
   name: "KuzzleBackOffice",
@@ -125,6 +130,7 @@ export default {
   },
   mounted() {
     this.$store.dispatch(UPDATE_USERLIST, {});
+    this.$store.dispatch(UPDATE_TIMESHEETS, {});
   }
 };
 </script>
