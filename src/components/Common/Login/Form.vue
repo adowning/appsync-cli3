@@ -57,6 +57,9 @@
         </div>
       </div>
     </div>
+    <v-btn v-if="inDevelopment" block outline warning @click="login();"
+      >test</v-btn
+    >
   </v-form>
 </template>
 
@@ -124,13 +127,13 @@ export default {
     }
   },
   mounted() {
-    var that = this;
-    kuzzle.security.searchUsers(null, null, function(error, result) {
-      if (!error) {
-        that.userList = result.users;
-        console.log(result.users[0].id);
-      }
-    });
+    // var that = this;
+    // kuzzle.security.searchUsers(null, null, function(error, result) {
+    //   if (!error) {
+    //     that.userList = result.users;
+    //     console.log(result.users[0].id);
+    //   }
+    // });
   },
   methods: {
     onDecode(_code) {
@@ -155,6 +158,9 @@ export default {
     reload() {},
     login() {
       this.error = '';
+      this.$store
+      this.username = 'ttest';
+      this.password = 'asdfasdf';
       this.$store
         .dispatch(DO_LOGIN, {
           username: this.username,
