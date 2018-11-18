@@ -25,6 +25,30 @@ export const waitForConnected = (timeout = 1000) => {
   return Promise.resolve()
 }
 
+/*
+===========
+TIME SHEETS
+===========
+*/
+export const performSearchTimesheets = (filters = {}, pagination = {}) => {
+  return kuzzle.security
+    .searchTimesheetsPromise({ ...filters }, { size: 100, ...pagination })
+    .then(result => {
+      let timeSheets = result.timeSheets.map(document => {
+        let object = {
+          content: document.content,
+          meta: new Meta(document.meta || {}),
+          id: document.id
+        }
+
+        return object
+      })
+
+      return { documents: timeSheets, total: result.total }
+    })
+}
+
+
 export const connectToEnvironment = environment => {
   // fix default port for users that have an old environment settings in their localStorage:
   if (environment.port === undefined) environment.port = 7512
@@ -382,3 +406,4 @@ export const performDeleteProfiles = (index, collection, ids) => {
       )
     )
 }
+
