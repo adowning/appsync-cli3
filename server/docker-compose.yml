@@ -5,7 +5,7 @@ services:
     image: kuzzleio/plugin-dev:latest
     command: /run-dev.sh
     volumes:
-      - "./kuzzle/run-dev.sh:/run-dev.sh"
+      - "./run-dev.sh:/run-dev.sh"
       - "./kuzzle/install-plugins.sh:/install-plugins.sh"
       - "./kuzzle/pm2.json:/config/pm2.json"
       - "../plugin:/var/app/plugins/enabled/timesheets"
@@ -17,7 +17,7 @@ services:
     #   - net.core.somaxconn=8192
     depends_on:
       - redis
-      # - elasticsearch
+      - elasticsearch
     ports:
       - "9229:9229"
       - "7512:7512"
@@ -64,14 +64,14 @@ services:
     image: redis:3.2
     labels:
       - consul.skip=true
-  # elasticsearch:
-  #   image: docker.elastic.co/elasticsearch/elasticsearch:5.4.1
-  #   environment:
-  #     - cluster.name=kuzzle
-  #     # disable xpack
-  #     - xpack.security.enabled=false
-  #     - xpack.monitoring.enabled=false
-  #     - xpack.graph.enabled=false
-  #     - xpack.watcher.enabled=false
-  #   labels:
-  #     - consul.skip=true
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:5.4.1
+    environment:
+      - cluster.name=kuzzle
+      # disable xpack
+      - xpack.security.enabled=false
+      - xpack.monitoring.enabled=false
+      - xpack.graph.enabled=false
+      - xpack.watcher.enabled=false
+    labels:
+      - consul.skip=true
