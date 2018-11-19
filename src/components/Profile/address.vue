@@ -64,14 +64,16 @@
           <v-flex>
             <v-text-field v-model="addressUpdate.zipcode" label="Zip Code" />
           </v-flex>
-          <v-flex>
-            <v-select
-              :items="countries"
-              v-model="addressUpdate.country"
-              label="Country"
-              autocomplete
-            />
-          </v-flex>
+          <!--
+            <v-flex>
+              <v-select
+                :items="countries"
+                v-model="addressUpdate.country"
+                label="Country"
+                autocomplete
+              />
+            </v-flex>
+          -->
         </v-layout>
       </v-card-text>
       <v-card-actions>
@@ -95,7 +97,7 @@
 
 <script>
 // eslint-disable-next-line
-var countries = require('country-list')()
+// var countries = require('country-list')()
 export default {
   props: {
     caption: { type: String, required: true },
@@ -106,16 +108,16 @@ export default {
       menu: false,
       modal: false,
       addressUpdate: {
-        line: "",
-        city: "",
-        state: "",
-        zipcode: "",
-        country: ""
+        line: '',
+        city: '',
+        state: '',
+        zipcode: '',
+        country: ''
       },
       showEditView: false,
-      enableSave: false,
-      countries: countries.getNames()
-    };
+      enableSave: false
+      // countries: countries.getNames()
+    }
   },
   computed: {
     addressUp: function() {
@@ -125,7 +127,7 @@ export default {
         this.addressUpdate.state +
         this.addressUpdate.zipcode +
         this.addressUpdate.country
-      );
+      )
     },
     addressProp: function() {
       return (
@@ -134,7 +136,7 @@ export default {
         this.address.state +
         this.address.zipcode +
         this.address.country
-      );
+      )
     }
   },
   watch: {
@@ -146,29 +148,29 @@ export default {
         this.addressUpdate.zipcode !== this.address.zipcode ||
         this.addressUpdate.country !== this.address.country
       ) {
-        this.enableSave = true;
+        this.enableSave = true
       } else {
-        this.enableSave = false;
+        this.enableSave = false
       }
     },
     addressProp: function() {
-      this.addressUpdate = JSON.parse(JSON.stringify(this.address));
+      this.addressUpdate = JSON.parse(JSON.stringify(this.address))
     }
   },
   methods: {
     cancelEdit: function() {
-      this.addressUpdate = JSON.parse(JSON.stringify(this.address));
+      this.addressUpdate = JSON.parse(JSON.stringify(this.address))
     },
     closeEdit: function() {
-      this.cancelEdit();
-      this.showEditView = false;
+      this.cancelEdit()
+      this.showEditView = false
     },
     updateAttribute: function() {
-      this.$emit("updateAddress", this.addressUpdate);
-      this.enableSave = false;
+      this.$emit('updateAddress', this.addressUpdate)
+      this.enableSave = false
     }
   }
-};
+}
 </script>
 <style scoped>
 .tool {
