@@ -6,21 +6,21 @@
 /* This Component is a template. */
 
 export default {
-  name: 'Crew',
+  name: "Crew",
   components: {},
   props: {},
   data() {
-    return {}
+    return {};
   },
   computed: {},
   methods: {},
   created() {},
   mounted() {},
   watch: {}
-}
+};
 </script>
 
 <style scoped lang="scss">
-.Component {
+.Crew {
 }
 </style>
