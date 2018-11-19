@@ -18,19 +18,19 @@
 <script>
 export default {
   data: () => ({
-    sheet: false,
-    drawer: false,
+    // sheet: false,
+    // drawer: false,
     items: [
-      { title: "Home", icon: "dashboard", link: "/" },
-      { title: "Crew", icon: "people", link: "/employeelist" },
-      { title: "Ownership", icon: "fa-person", link: "/owner" }
+      { title: 'Home', icon: 'dashboard', link: '/' },
+      { title: 'Crew', icon: 'people', link: '/employeelist' },
+      { title: 'Ownership', icon: 'fa-person', link: '/owner' }
     ],
     tiles: [
-      { img: "logo.png", title: "Home", link: "/" },
-      { img: "home.png", title: "Employees", link: "/employee" }
+      { img: 'logo.png', title: 'Home', link: '/' },
+      { img: 'home.png', title: 'Employees', link: '/employee' }
     ]
   })
-};
+}
 </script>
 <style>
 footer {
