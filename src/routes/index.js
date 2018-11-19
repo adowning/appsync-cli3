@@ -23,6 +23,7 @@ export default function createRoutes(VueRouter) {
             {
               path: "/profile",
               name: "Profile",
+              // redirect: "/profile/",
               meta: {
                 auth: true
               },
