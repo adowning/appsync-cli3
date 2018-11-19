@@ -1,5 +1,6 @@
-import Kuzzle from 'kuzzle-sdk/dist/kuzzle'
-import Promise from 'bluebird'
+// import Kuzzle from 'kuzzle-sdk/dist/kuzzle'
+import Kuzzle from 'kuzzle-sdk/src/Kuzzle';
+import Promise from 'bluebird';
 Kuzzle.prototype.bluebird = Promise
 
 let kuzzle = new Kuzzle('localhost', {
