@@ -1,5 +1,31 @@
 version: '2'
 services:
+  kuzzle:
+    image: kuzzleio/plugin-dev:${KUZZLE_DOCKER_TAG:-latest}
+    command: /run-dev.sh
+    volumes:
+      - "./kuzzle/run-dev.sh:/run-dev.sh"
+      - "./kuzzle/install-plugins.sh:/install-plugins.sh"
+      - "./kuzzle/pm2.json:/config/pm2.json"
+      - "../plugin:/var/app/plugins/enabled/${PLUGIN_NAME:-kuzzle-core-plugin-boilerplate}"
+    cap_add:
+      - SYS_PTRACE
+    ulimits:
+      nofile: 65536
+    sysctls:
+      - net.core.somaxconn=8192
+    depends_on:
+      - redis
+      - elasticsearch
+    ports:
+      - "9229:9229"
+      - "7512:7512"
+    environment:
+      - kuzzle_services__db__client__host=http://elasticsearch:9200
+      - kuzzle_services__internalCache__node__host=redis
+      - kuzzle_services__memoryStorage__node__host=redis
+      - NODE_ENV=development
+
   front:
     image: nginx
     ports:
@@ -12,27 +38,27 @@ services:
     labels:
       - consul.service=web
       - consul.tags=mydevicess
-  kuzzle:
-    image: kuzzleio/kuzzle:1.2.2
-    ports:
-      - '7512:7512'
-    cap_add:
-      - SYS_PTRACE
-    depends_on:
-      - redis
-      # - elasticsearch
-    volumes:
-      - './kuzzle/mapping.json:/mapping.json'
-      - './kuzzle/fixtures.json:/fixtures.json'
-      - './kuzzle/pm2.json:/config/pm2.json'
-    environment:
-      - kuzzle_services__db__client__host=http://192.168.1.10:9200
-      - kuzzle_services__internalCache__node__host=redis
-      - kuzzle_services__memoryStorage__node__host=redis
-      - NODE_ENV=production
-    labels:
-      - consul.service=kuzzle
-      - consul.tags=mydevices
+  # kuzzle:
+  #   image: kuzzleio/kuzzle:1.2.2
+  #   ports:
+  #     - '7512:7512'
+  #   cap_add:
+  #     - SYS_PTRACE
+  #   depends_on:
+  #     - redis
+  #     # - elasticsearch
+  #   volumes:
+  #     - './kuzzle/mapping.json:/mapping.json'
+  #     - './kuzzle/fixtures.json:/fixtures.json'
+  #     - './kuzzle/pm2.json:/config/pm2.json'
+  #   environment:
+  #     - kuzzle_services__db__client__host=http://192.168.1.10:9200
+  #     - kuzzle_services__internalCache__node__host=redis
+  #     - kuzzle_services__memoryStorage__node__host=redis
+  #     - NODE_ENV=production
+  #   labels:
+  #     - consul.service=kuzzle
+  #     - consul.tags=mydevices
   redis:
     image: redis:3.2
     labels:
