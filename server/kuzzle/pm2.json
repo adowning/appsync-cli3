@@ -1,7 +1,10 @@
 {
-    "apps": [{
-      "name": "kuzzle",
-      "script": "bin/kuzzle",
-      "args": "start --fixtures /fixtures.json --mappings /mapping.json"
-    }]
-  }
+  "apps": [{
+    "name": "KuzzleServer",
+    "script": "bin/kuzzle",
+    "args": ["start"],
+    "node_args": "--inspect=0.0.0.0:9229",
+    "watch": ["plugins/enabled"],
+    "ignore_watch" : ["node_modules", "plugins/enabled/**/.git", "plugins/enabled/**/features/*"]
+  }]
+}
