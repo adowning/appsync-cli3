@@ -8,7 +8,7 @@ services:
       - "./kuzzle/run-dev.sh:/run-dev.sh"
       - "./kuzzle/install-plugins.sh:/install-plugins.sh"
       - "./kuzzle/pm2.json:/config/pm2.json"
-      - "../plugin:/var/app/plugins/enabled/${PLUGIN_NAME:-kuzzle-core-plugin-boilerplate}"
+      - "../plugin:/var/app/plugins/enabled/timesheets"
     cap_add:
       - SYS_PTRACE
     ulimits:
