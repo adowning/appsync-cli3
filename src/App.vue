@@ -130,11 +130,11 @@ export default {
   },
   async mounted() {
     const query = {
-      controller: "kuzzle-core-plugin-boilerplate/myNewController",
-      action: "clockIn",
-      // documentId: 'my-id',
+      controller: "kuzzle-core-plugin-boilerplate/getDocument",
+      action: "getDocument",
+      documentId: ' 2342344',
       indexName: "playground",
-      userId: "my-collection"
+      userId: "test"
     }
 
     try {
