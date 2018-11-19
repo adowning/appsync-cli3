@@ -1,23 +1,23 @@
-const { Kuzzle } = require('kuzzle-sdk');
+// const { Kuzzle } = require('kuzzle-sdk');
 
-const kuzzle = new Kuzzle('websocket', { host: 'localhost', port: 7512 });
+// const kuzzle = new Kuzzle('websocket', { host: 'localhost', port: 7512 });
 
-kuzzle
-  .connect()
-  .then(() => {
-    // You are now connected to your Kuzzle instance.
-    return kuzzle.server.now();
-  })
-  .then(serverTime => console.log(serverTime))
-  .catch(error => console.error(error));
+// kuzzle
+//   .connect()
+//   .then(() => {
+//     // You are now connected to your Kuzzle instance.
+//     return kuzzle.server.now();
+//   })
+//   .then(serverTime => console.log(serverTime))
+//   .catch(error => console.error(error));
 
-// import Kuzzle from 'kuzzle-sdk/dist/kuzzle'
-// import Promise from 'bluebird';
-// Kuzzle.prototype.bluebird = Promise
+import Kuzzle from "kuzzle-sdk/dist/kuzzle";
+import Promise from "bluebird";
+Kuzzle.prototype.bluebird = Promise;
 
-// let kuzzle = new Kuzzle("localhost", {
-//   connect: "manual"
-// });
+let kuzzle = new Kuzzle('localhost', {
+  connect: 'manual'
+})
 
-window.kuzzle = kuzzle;
-export default kuzzle;
+window.kuzzle = kuzzle
+export default kuzzle
