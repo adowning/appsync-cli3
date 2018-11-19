@@ -104,94 +104,95 @@
 </template>
 
 <script>
-import userName from './name.vue';
-import userEmail from './email.vue';
-import birthDate from './birthdate.vue';
-import phoneNumber from './phone.vue';
-import address from './address.vue';
-import custom from './custom.vue';
+import userName from "./name.vue";
+import userEmail from "./email.vue";
+import birthDate from "./birthdate.vue";
+import phoneNumber from "./phone.vue";
+import address from "./address.vue";
+import custom from "./custom.vue";
 // eslint-disable-next-line
 // var AmazonCognitoIdentity = require('amazon-cognito-identity-js')
 
 export default {
   components: {
-    'app-user-name': userName,
-    'app-user-email': userEmail,
-    'app-birth-date': birthDate,
-    'app-phone-number': phoneNumber,
-    'app-address': address,
-    'app-custom': custom
+    "app-user-name": userName,
+    "app-user-email": userEmail,
+    "app-birth-date": birthDate,
+    "app-phone-number": phoneNumber,
+    "app-address": address,
+    "app-custom": custom
   },
   data: function() {
     return {
       userModel: {
-        name: { first: '', middle: '', last: '' },
-        emailAddress: '',
-        birthDate: '',
-        phoneNumber: { mobile: '', business: '', home: '' },
+        name: { first: "", middle: "", last: "" },
+        emailAddress: "",
+        birthDate: "",
+        phoneNumber: { mobile: "", business: "", home: "" },
         homeAddress: {
-          line: '',
-          city: '',
-          state: '',
-          zipcode: '',
-          country: ''
+          line: "",
+          city: "",
+          state: "",
+          zipcode: "",
+          country: ""
         },
         businessAddress: {
-          line: '',
-          city: '',
-          state: '',
-          zipcode: '',
-          country: ''
+          line: "",
+          city: "",
+          state: "",
+          zipcode: "",
+          country: ""
         },
         custom: []
       },
       addCustomForm: false
-    }
+    };
   },
   beforeMount: function() {
+    console.log("bm");
     if (this.$store.state.authenticated === true) {
-      this.getAttributes()
+      this.getAttributes();
     }
   },
   methods: {
     getAttributes: function() {
-      console.log('getting attributes from server...')
-      console.log(this.$store.state.profile)
+      console.log("getting attributes from server...");
+      console.log(this.$store.state.profile);
       this.$store.state.cognitoUser.getUserAttributes((err, result) => {
         if (err) {
-          console.log('get attribute error: ' + err)
-          return;
+          console.log("get attribute error: " + err);
+          return
         }
-        this.mapAttributes(result)
-      })
+        this.mapAttributes(result);
+      });
     },
     mapAttributes: function(result) {
-      console.log('mapping attributes...')
+      console.log("mapping attributes...");
       for (let attribute of result) {
-        if (attribute.Name === 'given_name') {
-          this.userModel.name.first = attribute.Value
-        } else if (attribute.Name === 'middle_name') {
-          this.userModel.name.middle = attribute.Value
-        } else if (attribute.Name === 'family_name') {
-          this.userModel.name.last = attribute.Value
-        } else if (attribute.Name === 'birthdate') {
-          this.userModel.birthDate = attribute.Value
-        } else if (attribute.Name === 'email') {
-          this.userModel.emailAddress = attribute.Value
-        } else if (attribute.Name === 'custom:phone_numbers') {
-          this.userModel.phoneNumber = JSON.parse(attribute.Value)
-        } else if (attribute.Name === 'custom:home_address') {
-          this.userModel.homeAddress = JSON.parse(attribute.Value)
-        } else if (attribute.Name === 'custom:business_address') {
-          this.userModel.businessAddress = JSON.parse(attribute.Value)
-        } else if (attribute.Name === 'custom:custom_attribute') {
-          this.userModel.custom = JSON.parse(attribute.Value)
+        if (attribute.Name === "given_name") {
+          this.userModel.name.first = attribute.Value;
+        } else if (attribute.Name === "middle_name") {
+          this.userModel.name.middle = attribute.Value;
+        } else if (attribute.Name === "family_name") {
+          this.userModel.name.last = attribute.Value;
+        } else if (attribute.Name === "birthdate") {
+          this.userModel.birthDate = attribute.Value;
+        } else if (attribute.Name === "email") {
+          this.userModel.emailAddress = attribute.Value;
+        } else if (attribute.Name === "custom:phone_numbers") {
+          this.userModel.phoneNumber = JSON.parse(attribute.Value);
+        } else if (attribute.Name === "custom:home_address") {
+          this.userModel.homeAddress = JSON.parse(attribute.Value);
+        } else if (attribute.Name === "custom:business_address") {
+          this.userModel.businessAddress = JSON.parse(attribute.Value);
+        } else if (attribute.Name === "custom:custom_attribute") {
+          this.userModel.custom = JSON.parse(attribute.Value);
         }
-        console.log('property:' + attribute.Name + ' value:' + attribute.Value)
+        console.log("property:" + attribute.Name + " value:" + attribute.Value);
       }
     },
     updateName: function(name) {
-      console.log('updating name...')
+      console.log("updating name...");
       // let attributeList = [];
       // let attributeFirstName = { Name: "given_name", Value: name.first };
       // let attributeMiddleName = { Name: "middle_name", Value: name.middle };
@@ -223,138 +224,138 @@ export default {
       // );
     },
     updateBirthDate: function(date) {
-      console.log('updating birthday date...')
-      let attributeList = []
-      let attributeBirthDate = { Name: 'birthdate', Value: date }
+      console.log("updating birthday date...");
+      let attributeList = [];
+      let attributeBirthDate = { Name: "birthdate", Value: date };
       let birthDate = new AmazonCognitoIdentity.CognitoUserAttribute(
         attributeBirthDate
-      )
-      console.log(birthDate)
-      attributeList.push(birthDate)
+      );
+      console.log(birthDate);
+      attributeList.push(birthDate);
       this.$store.state.cognitoUser.updateAttributes(
         attributeList,
         (err, result) => {
           if (err) {
-            console.log('error: ' + err)
-            return;
+            console.log("error: " + err);
+            return
           }
-          console.log('call result: ' + result)
-          this.userModel.birthDate = date
+          console.log("call result: " + result);
+          this.userModel.birthDate = date;
         }
-      )
+      );
     },
     updatePhone: function(phone) {
-      console.log('updating phone number...')
-      var attributeList = []
-      var phoneNumbers = JSON.stringify(phone)
-      console.log('saving numbers :' + phoneNumbers)
+      console.log("updating phone number...");
+      var attributeList = [];
+      var phoneNumbers = JSON.stringify(phone);
+      console.log("saving numbers :" + phoneNumbers);
       var attributePhoneNumber = {
-        Name: 'custom:phone_numbers',
+        Name: "custom:phone_numbers",
         Value: phoneNumbers
-      }
+      };
       var phoneNumber = new AmazonCognitoIdentity.CognitoUserAttribute(
         attributePhoneNumber
-      )
-      attributeList.push(phoneNumber)
+      );
+      attributeList.push(phoneNumber);
       this.$store.state.cognitoUser.updateAttributes(
         attributeList,
         (err, result) => {
           if (err) {
-            console.log('error: ' + JSON.stringify(err))
-            return;
+            console.log("error: " + JSON.stringify(err));
+            return
           }
-          console.log('call result: ' + result)
-          this.userModel.phoneNumber = JSON.parse(JSON.stringify(phone))
+          console.log("call result: " + result);
+          this.userModel.phoneNumber = JSON.parse(JSON.stringify(phone));
         }
-      )
+      );
     },
     updateAddress: function(newAddress, type) {
-      console.log('updating address...')
-      let attributeList = []
-      let addressJSON = '';
-      if (type === 'home') {
-        addressJSON = JSON.stringify(newAddress)
-      } else if (type === 'business') {
-        addressJSON = JSON.stringify(newAddress)
+      console.log("updating address...");
+      let attributeList = [];
+      let addressJSON = "";
+      if (type === "home") {
+        addressJSON = JSON.stringify(newAddress);
+      } else if (type === "business") {
+        addressJSON = JSON.stringify(newAddress);
       } else {
-        return
+        return;
       }
       var attributeAddress = {
-        Name: 'custom:' + type + '_address',
+        Name: "custom:" + type + "_address",
         Value: addressJSON
-      }
+      };
       var address = new AmazonCognitoIdentity.CognitoUserAttribute(
         attributeAddress
-      )
-      attributeList.push(address)
+      );
+      attributeList.push(address);
       this.$store.state.cognitoUser.updateAttributes(
         attributeList,
         (err, result) => {
           if (err) {
-            console.log('error: ' + JSON.stringify(err))
-            return;
+            console.log("error: " + JSON.stringify(err));
+            return
           }
-          console.log('call result: ' + result)
-          if (type === 'home') {
-            console.log('home address updated')
-            this.userModel.homeAddress = JSON.parse(JSON.stringify(newAddress))
-          } else if (type === 'business') {
-            console.log('business address updated')
+          console.log("call result: " + result);
+          if (type === "home") {
+            console.log("home address updated");
+            this.userModel.homeAddress = JSON.parse(JSON.stringify(newAddress));
+          } else if (type === "business") {
+            console.log("business address updated");
             this.userModel.businessAddress = JSON.parse(
               JSON.stringify(newAddress)
-            )
+            );
           }
         }
-      )
+      );
     },
     addCustom: function(value) {
-      console.log('adding custom attribute ...')
-      let newCustom = this.userModel.custom.slice()
-      newCustom.push(value)
-      this.updateCustomAtrribute(newCustom)
+      console.log("adding custom attribute ...");
+      let newCustom = this.userModel.custom.slice();
+      newCustom.push(value);
+      this.updateCustomAtrribute(newCustom);
     },
     updateCustom: function(value, index) {
-      console.log('updating custom attribute ...')
-      let newCustom = this.userModel.custom.slice()
-      newCustom.splice(index, 1, value)
-      this.updateCustomAtrribute(newCustom)
+      console.log("updating custom attribute ...");
+      let newCustom = this.userModel.custom.slice();
+      newCustom.splice(index, 1, value);
+      this.updateCustomAtrribute(newCustom);
     },
     deleteCustom: function(index) {
-      console.log('deleting custom attribute at index ' + index)
-      let newCustom = this.userModel.custom.slice()
+      console.log("deleting custom attribute at index " + index);
+      let newCustom = this.userModel.custom.slice();
       if (index > -1) {
-        newCustom.splice(index, 1)
+        newCustom.splice(index, 1);
       }
-      this.updateCustomAtrribute(newCustom)
+      this.updateCustomAtrribute(newCustom);
     },
     updateCustomAtrribute: function(customAttribute) {
-      console.log('xxxx')
-      let attributeList = []
+      console.log("xxxx");
+      let attributeList = [];
       let attribute = {
-        Name: 'custom:custom_attribute',
+        Name: "custom:custom_attribute",
         Value: JSON.stringify(customAttribute)
-      }
+      };
       var newAttribute = new AmazonCognitoIdentity.CognitoUserAttribute(
         attribute
-      )
-      attributeList.push(newAttribute)
-      console.log(this.$store.state.cognitoUser)
+      );
+      attributeList.push(newAttribute);
+      console.log(this.$store.state.cognitoUser);
       this.$store.state.cognitoUser.updateAttributes(
         attributeList,
         (err, result) => {
           if (err) {
-            console.log('error: ' + JSON.stringify(err))
-            return;
+            console.log("error: " + JSON.stringify(err));
+            return
           }
-          console.log('call result: ' + result)
-          console.log('custom attribute updated')
-          this.addCustomForm = false
-          this.userModel.custom = customAttribute.slice()
+          console.log("call result: " + result);
+          console.log("custom attribute updated");
+          this.addCustomForm = false;
+          this.userModel.custom = customAttribute.slice();
         }
-      )
+      );
     }
   }
-}
+};
 </script>
 <style scoped>
 .tool {

@@ -27,9 +27,9 @@ export default function createRoutes(VueRouter) {
                 auth: true
               },
               component(resolve) {
-                require(["../components/Profile/"], resolve);
-              },
-              children: DataSubRoutes
+                require(["../components/Profile/index.vue"], resolve);
+              }
+              // children: DataSubRoutes
             },
             {
               path: "/security",
