@@ -6,9 +6,11 @@ services:
     command: /run-dev.sh
     volumes:
       - "./run-dev.sh:/run-dev.sh"
-      - "./kuzzle/install-plugins.sh:/install-plugins.sh"
-      - "./kuzzle/pm2.json:/config/pm2.json"
+      - "./install-plugins.sh:/install-plugins.sh"
+      - "./pm2.json:/config/pm2.json"
       - "../plugin:/var/app/plugins/enabled/timesheets"
+      - './kuzzle/mapping.json:/mapping.json'
+      - './kuzzle/fixtures.json:/fixtures.json'
     cap_add:
       - SYS_PTRACE
     ulimits:
