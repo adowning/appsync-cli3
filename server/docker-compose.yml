@@ -13,11 +13,11 @@ services:
       - SYS_PTRACE
     ulimits:
       nofile: 65536
-    sysctls:
-      - net.core.somaxconn=8192
+    # sysctls:
+    #   - net.core.somaxconn=8192
     depends_on:
       - redis
-      - elasticsearch
+      # - elasticsearch
     ports:
       - "9229:9229"
       - "7512:7512"
