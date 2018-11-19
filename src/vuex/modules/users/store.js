@@ -24,8 +24,9 @@ export const performSearchDocuments = ( collection, index, filters = {}, paginat
     var timeSheets = await performSearchDocuments(
       "timeSheets",
       "playground",
-      null,
-      50
+      {},
+      50,
+      {}
     );
     commit(types.TIMESHEETS, timeSheets);
   }
