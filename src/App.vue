@@ -128,8 +128,8 @@ export default {
     }
   },
   mounted() {
-    this.$store.dispatch(UPDATE_USERLIST, {});
-    this.$store.dispatch(UPDATE_TIMESHEETS, {})
+    // this.$store.dispatch(UPDATE_USERLIST, {})
+    // this.$store.dispatch(UPDATE_TIMESHEETS, {});
   }
 }
 </script>
