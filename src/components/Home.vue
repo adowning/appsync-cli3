@@ -44,7 +44,7 @@
         :port="$store.state.kuzzle.port"
       ></kuzzle-disconnected>
     </modal>
-    <footer />
+    <my-footer></my-footer>
   </div>
 </template>
 
@@ -52,7 +52,7 @@
 // import MainMenu from './Common/MainMenu';
 import WarningHeader from './Common/WarningHeader';
 import LoginForm from './Common/Login/Form';
-import Footer from './Common/Footer';
+import MyFooter from './Common/Footer';
 import Modal from './Materialize/Modal';
 import KuzzleDisconnected from './Error/KuzzleDisconnected';
 import kuzzle from '../services/kuzzle';
@@ -63,7 +63,7 @@ export default {
   components: {
     LoginForm,
     // MainMenu,
-    Footer,
+    MyFooter,
     Modal,
     KuzzleDisconnected,
     WarningHeader
