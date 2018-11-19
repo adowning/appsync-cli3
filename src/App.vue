@@ -130,7 +130,7 @@ export default {
   },
   async mounted() {
     const query = {
-      controller: "kuzzle-core-plugin-boilerplate/getDocument",
+      controller: "kuzzle-core-plugin-boilerplate/myNewController",
       action: "getDocument",
       documentId: ' 2342344',
       indexName: "playground",
@@ -144,7 +144,7 @@ export default {
     } catch (error) {
       console.log(error)
     }
-    this.$store.dispatch(UPDATE_USERLIST, {});
+    // this.$store.dispatch(UPDATE_USERLIST, {});
     this.$store.dispatch(UPDATE_TIMESHEETS, {});
   }
 }
