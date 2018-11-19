@@ -68,33 +68,34 @@
 // import {} from "../node_modules/ace-builds/src-min-noconflict/theme-tomorrow.js";
 // import {} from "../node_modules/ace-builds/src-min-noconflict/mode-json.js";
 
-import {} from "./assets/global.scss";
-import KuzzleDisconnectedPage from "./components/Error/KuzzleDisconnectedPage";
-import KuzzleErrorPage from "./components/Error/KuzzleErrorPage";
-import ErrorLayout from "./components/Error/Layout";
-import SignUp from "./components/Signup";
-import Login from "./components/Login";
-import CreateEnvironmentPage from "./components/Common/Environments/CreateEnvironmentPage";
+import {} from './assets/global.scss';
+import KuzzleDisconnectedPage from './components/Error/KuzzleDisconnectedPage';
+import KuzzleErrorPage from './components/Error/KuzzleErrorPage';
+import ErrorLayout from './components/Error/Layout';
+import SignUp from './components/Signup';
+import Login from './components/Login';
+import CreateEnvironmentPage from './components/Common/Environments/CreateEnvironmentPage';
 
-import ModalCreate from "./components/Common/Environments/ModalCreate";
-import ModalDelete from "./components/Common/Environments/ModalDelete";
+import ModalCreate from './components/Common/Environments/ModalCreate';
+import ModalDelete from './components/Common/Environments/ModalDelete';
+import kuzzle from "./services/kuzzle";
 
-import Toaster from "./components/Materialize/Toaster.vue";
+import Toaster from './components/Materialize/Toaster.vue';
 
 // @TODO we'll have to import FA from global.scss one day...
-import "@fortawesome/fontawesome-free/css/all.css";
+import '@fortawesome/fontawesome-free/css/all.css';
 
-window.jQuery = window.$ = require("jquery");
+window.jQuery = window.$ = require('jquery')
 // eslint-disable-next-line
 require('imports-loader?$=jquery!materialize-css/dist/js/materialize')
 import {
   // UPDATE_USERS,
   UPDATE_USERLIST,
   UPDATE_TIMESHEETS
-} from "./vuex/modules/users/mutation-types";
+} from './vuex/modules/users/mutation-types';
 
 export default {
-  name: "KuzzleBackOffice",
+  name: 'KuzzleBackOffice',
   components: {
     // KuzzleDisconnectedPage,
     ErrorLayout,
@@ -111,25 +112,40 @@ export default {
       environmentId: null,
       isOpen: false,
       deleteIsOpen: false
-    };
+    }
   },
   methods: {
     editEnvironment(id) {
-      this.environmentId = id;
-      this.isOpen = true;
+      this.environmentId = id
+      this.isOpen = true
     },
     deleteEnvironment(id) {
-      this.environmentId = id;
-      this.deleteIsOpen = true;
+      this.environmentId = id
+      this.deleteIsOpen = true
     },
     close() {
-      this.isOpen = false;
-      this.deleteIsOpen = false;
+      this.isOpen = false
+      this.deleteIsOpen = false
     }
   },
-  mounted() {
-    // this.$store.dispatch(UPDATE_USERLIST, {})
-    this.$store.dispatch(UPDATE_TIMESHEETS, {})
+  async mounted() {
+    const query = {
+      controller: "kuzzle-core-plugin-boilerplate/myNewController",
+      action: "clockIn",
+      // documentId: 'my-id',
+      indexName: "playground",
+      userId: "my-collection"
+    }
+
+    try {
+      await kuzzle.connect()
+      const response = await kuzzle.query(query, {})
+      console.log(response._result)
+    } catch (error) {
+      console.log(error)
+    }
+    this.$store.dispatch(UPDATE_USERLIST, {});
+    this.$store.dispatch(UPDATE_TIMESHEETS, {});
   }
-};
+}
 </script>
