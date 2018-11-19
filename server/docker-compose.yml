@@ -26,18 +26,18 @@ services:
       - kuzzle_services__memoryStorage__node__host=redis
       - NODE_ENV=development
 
-  front:
-    image: nginx
-    ports:
-      - '80:80'
-    volumes:
-      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
-      - ./www/dist:/var/www
-    links:
-      - kuzzle
-    labels:
-      - consul.service=web
-      - consul.tags=mydevicess
+  # front:
+  #   image: nginx
+  #   ports:
+  #     - '80:80'
+  #   volumes:
+  #     - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+  #     - ./www/dist:/var/www
+  #   links:
+  #     - kuzzle
+  #   labels:
+  #     - consul.service=web
+  #     - consul.tags=mydevicess
   # kuzzle:
   #   image: kuzzleio/kuzzle:1.2.2
   #   ports:
