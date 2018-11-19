@@ -44,29 +44,32 @@
         :port="$store.state.kuzzle.port"
       ></kuzzle-disconnected>
     </modal>
+    <footer />
   </div>
 </template>
 
 <script>
 // import MainMenu from './Common/MainMenu';
-import WarningHeader from "./Common/WarningHeader";
-import LoginForm from "./Common/Login/Form";
-import Modal from "./Materialize/Modal";
-import KuzzleDisconnected from "./Error/KuzzleDisconnected";
-import kuzzle from "../services/kuzzle";
-import * as types from "../vuex/modules/auth/mutation-types";
+import WarningHeader from './Common/WarningHeader';
+import LoginForm from './Common/Login/Form';
+import Footer from './Common/Footer';
+import Modal from './Materialize/Modal';
+import KuzzleDisconnected from './Error/KuzzleDisconnected';
+import kuzzle from '../services/kuzzle';
+import * as types from '../vuex/modules/auth/mutation-types';
 
 export default {
-  name: "Home",
+  name: 'Home',
   components: {
     LoginForm,
     // MainMenu,
+    Footer,
     Modal,
     KuzzleDisconnected,
     WarningHeader
   },
   mounted() {
-    kuzzle.addListener("tokenExpired", () => this.onTokenExpired());
+    kuzzle.addListener('tokenExpired', () => this.onTokenExpired())
   },
   data() {
     return {
@@ -76,39 +79,39 @@ export default {
       kuzzleDisconnectedIsOpen: false,
       warningHeaderText:
         '<i class="fa fa-exclamation-triangle" aria-hidden="true"></i> <b>Warning!</b> Your Kuzzle has no administrator user. It is strongly recommended <a href="#/signup"> that you create one.</a><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>'
-    };
+    }
   },
   methods: {
     onLogin() {
-      this.tokenExpiredIsOpen = false;
-      this.$emit("modal-close", "tokenExpired");
+      this.tokenExpiredIsOpen = false
+      this.$emit('modal-close', 'tokenExpired')
     },
     editEnvironment(id) {
-      this.$emit("environment::create", id);
+      this.$emit('environment::create', id)
     },
     deleteEnvironment(id) {
-      this.$emit("environment::delete", id);
+      this.$emit('environment::delete', id)
     },
     onTokenExpired() {
-      this.$store.commit(types.SET_TOKEN_VALID, false);
+      this.$store.commit(types.SET_TOKEN_VALID, false)
     },
     noop() {}
   },
   watch: {
-    "$store.state.auth.tokenValid"(valid) {
+    '$store.state.auth.tokenValid'(valid) {
       if (!valid) {
-        this.tokenExpiredIsOpen = true;
+        this.tokenExpiredIsOpen = true
       }
     },
-    "$store.state.kuzzle.connectedTo"(isConnected) {
+    '$store.state.kuzzle.connectedTo'(isConnected) {
       if (!isConnected) {
-        this.kuzzleDisconnectedIsOpen = true;
-        return
+        this.kuzzleDisconnectedIsOpen = true
+        return;
       }
-      this.kuzzleDisconnectedIsOpen = false;
+      this.kuzzleDisconnectedIsOpen = false
     }
   }
-};
+}
 </script>
 
 <style lang="scss" rel="stylesheet/scss" scoped>
