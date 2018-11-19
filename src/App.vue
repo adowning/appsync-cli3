@@ -130,19 +130,19 @@ export default {
   },
   async mounted() {
     const query = {
-      controller: "kuzzle-core-plugin-boilerplate/myNewController",
-      action: "getDocument",
-      documentId: ' 2342344',
-      indexName: "playground",
-      userId: "test"
-    }
+      controller: 'kuzzle-core-plugin-boilerplate/myNewController',
+      action: 'getDocument',
+      documentId: '2342344',
+      indexName: 'playground',
+      collectionName: 'test'
+    };
 
     try {
-      await kuzzle.connect()
-      const response = await kuzzle.query(query, {})
-      console.log(response._result)
+      await kuzzle.connect();
+      const response = await kuzzle.query(query, {});
+      console.log(response._result);
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
     // this.$store.dispatch(UPDATE_USERLIST, {});
     this.$store.dispatch(UPDATE_TIMESHEETS, {});
