@@ -1,9 +1,12 @@
 <template>
-  <div class="Crew">crew</div>
+  <div class="Crew">
+    <v-btn block outline warning @click="test();">test</v-btn>
+  </div>
 </template>
 
 <script>
 /* This Component is a template. */
+import kuzzle from "../../services/kuzzle";
 
 export default {
   name: 'Crew',
