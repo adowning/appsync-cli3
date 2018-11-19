@@ -6,18 +6,36 @@
 /* This Component is a template. */
 
 export default {
-  name: "Crew",
+  name: 'Crew',
   components: {},
   props: {},
   data() {
-    return {};
+    return {}
   },
   computed: {},
-  methods: {},
+  methods: {
+    async test() {
+      const query = {
+        controller: 'kuzzle-core-plugin-boilerplate/myNewController',
+        action: 'saySomething',
+        documentId: '2342344',
+        indexName: 'playground',
+        collectionName: 'test'
+      };
+
+      try {
+        await kuzzle.connect();
+        const response = await kuzzle.query(query, {});
+        console.log(response._result);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  },
   created() {},
   mounted() {},
   watch: {}
-};
+}
 </script>
 
 <style scoped lang="scss">

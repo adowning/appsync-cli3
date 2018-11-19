@@ -78,7 +78,6 @@ import CreateEnvironmentPage from "./components/Common/Environments/CreateEnviro
 
 import ModalCreate from "./components/Common/Environments/ModalCreate";
 import ModalDelete from "./components/Common/Environments/ModalDelete";
-import kuzzle from './services/kuzzle';
 
 import Toaster from "./components/Materialize/Toaster.vue";
 
@@ -129,21 +128,6 @@ export default {
     }
   },
   async mounted() {
-    const query = {
-      controller: "kuzzle-core-plugin-boilerplate/myNewController",
-      action: "getDocument",
-      documentId: "2342344",
-      indexName: "playground",
-      collectionName: "test"
-    }
-
-    try {
-      await kuzzle.connect()
-      const response = await kuzzle.query(query, {})
-      console.log(response)
-    } catch (error) {
-      console.log(error)
-    }
     // this.$store.dispatch(UPDATE_USERLIST, {});
     this.$store.dispatch(UPDATE_TIMESHEETS, {})
   }
