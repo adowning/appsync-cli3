@@ -11,6 +11,10 @@
 /* This Component is a template. */
 import kuzzle from '../../services/kuzzle';
 import { DO_CLOCKIN } from '../../vuex/modules/users/mutation-types';
+import {
+  UPDATE_USERLIST,
+  UPDATE_TIMESHEETS
+} from '../../vuex/modules/users/mutation-types';
 
 export default {
   name: "Crew",
@@ -72,7 +76,10 @@ export default {
     }
   },
   created() {},
-  mounted() {},
+  mounted() {
+    this.$store.dispatch(UPDATE_USERLIST, {});
+    this.$store.dispatch(UPDATE_TIMESHEETS, {})
+  },
   watch: {}
 };
 </script>
