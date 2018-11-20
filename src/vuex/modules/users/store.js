@@ -23,9 +23,12 @@ const actions = {
       'playground',
       {},
       50,
-      {}
+      [
+        { match: { out_timestamp: "0" } },
+        { match: { in_location: "74.192.100.17" } }
+      ]
     )
-    commit(types.DEVICE_USERLIST, users)
+    commit(types.DEVICE_USERLIST, list)
   },
   async [types.DO_CLOCKIN]({ commit, dispatch }, id) {
     // var status = await clockInUser(id);
