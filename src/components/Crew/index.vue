@@ -1,40 +1,54 @@
 <template>
   <div class="Crew">
-    <v-btn block outline warning @click="test();">test</v-btn>
+    <v-btn block outline warning @click="test();">clock in</v-btn>
+    <v-btn block outline warning @click="test2();">clock out</v-btn>
   </div>
 </template>
 
 <script>
 /* This Component is a template. */
-import kuzzle from '../../services/kuzzle';
+import kuzzle from "../../services/kuzzle";
 
 export default {
-  name: "Crew",
+  name: 'Crew',
   components: {},
   props: {},
   data() {
-    return {};
+    return {}
   },
   computed: {},
   methods: {
     async test() {
       const args = {
-          controller: "kuzzle-core-plugin-boilerplate/clockPunch",
-          action: "clockOut"
+          controller: 'kuzzle-core-plugin-boilerplate/clockPunch',
+          action: 'clockIn'
         },
         query = {
-          empId: "1444044"
-        }
+          empId: '1444044'
+        };
       kuzzle.query(args, query, function(err, res) {
-        console.log(err)
-        console.log(res.result)
-      })
+        console.log(err);
+        console.log(res.result);
+      });
+    },
+    async test2() {
+      const args = {
+          controller: 'kuzzle-core-plugin-boilerplate/clockPunch',
+          action: 'clockOut'
+        },
+        query = {
+          empId: '1444044'
+        };
+      kuzzle.query(args, query, function(err, res) {
+        console.log(err);
+        console.log(res.result);
+      });
     }
   },
   created() {},
   mounted() {},
   watch: {}
-};
+}
 </script>
 
 <style scoped lang="scss">
