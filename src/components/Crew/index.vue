@@ -13,7 +13,7 @@
             <template v-for="(item, index) in users">
               <v-list-tile :key="item.id" avatar ripple @click="toggle(index);">
                 <v-list-tile-avatar>
-                  <img :src="item.id" />
+                  <img :src="item.content.photo_url" />
                 </v-list-tile-avatar>
                 <v-list-tile-content>
                   <v-list-tile-title>{{ item.id }}</v-list-tile-title>
@@ -59,22 +59,22 @@
 
 <script>
 /* This Component is a template. */
-import { mapState } from "vuex";
-import kuzzle from '../../services/kuzzle';
-import { DO_CLOCKIN } from '../../vuex/modules/users/mutation-types';
+import { mapState } from 'vuex';
+import kuzzle from "../../services/kuzzle";
+import { DO_CLOCKIN } from "../../vuex/modules/users/mutation-types";
 import {
   UPDATE_USERLIST,
   UPDATE_TIMESHEETS
-} from '../../vuex/modules/users/mutation-types';
+} from "../../vuex/modules/users/mutation-types";
 
 export default {
-  name: "Crew",
+  name: 'Crew',
   components: {},
   props: {},
   data() {
     return {
       selected: [0]
-    };
+    }
   },
   computed: {
     ...mapState({
@@ -84,74 +84,74 @@ export default {
   },
   methods: {
     toggle(index) {
-      const i = this.selected.indexOf(index);
+      const i = this.selected.indexOf(index)
 
       if (i > -1) {
-        this.selected.splice(i, 1);
+        this.selected.splice(i, 1)
       } else {
-        this.selected.push(index);
+        this.selected.push(index)
       }
     },
     async test4() {
       this.$store
-        .dispatch(DO_CLOCKIN, '1444044')
+        .dispatch(DO_CLOCKIN, "1444044")
         .then(() => {
-          this.onLogin();
+          this.onLogin()
         })
         .catch(err => {
-          this.error = err.message;
-        });
+          this.error = err.message
+        })
     },
     async test() {
       const args = {
-          controller: "kuzzle-core-plugin-boilerplate/clockPunch",
-          action: "clockIn"
+          controller: 'kuzzle-core-plugin-boilerplate/clockPunch',
+          action: 'clockIn'
         },
         query = {
-          empId: "1444044"
-        }
+          empId: '1444044'
+        };
       kuzzle.query(args, query, function(err, res) {
-        console.log(err)
-        console.log(res.result)
-      })
+        console.log(err);
+        console.log(res.result);
+      });
     },
     async test2() {
       const args = {
-          controller: "kuzzle-core-plugin-boilerplate/clockPunch",
-          action: "clockOut"
+          controller: 'kuzzle-core-plugin-boilerplate/clockPunch',
+          action: 'clockOut'
         },
         query = {
-          empId: "1444044"
-        }
+          empId: '1444044'
+        };
       kuzzle.query(args, query, function(err, res) {
-        console.log(err)
-        console.log(res)
-      })
+        console.log(err);
+        console.log(res);
+      });
     },
     async test3() {
       const args = {
-          controller: "kuzzle-core-plugin-boilerplate/clockPunch",
-          action: "test"
+          controller: 'kuzzle-core-plugin-boilerplate/clockPunch',
+          action: 'test'
         },
         query = {
-          empId: "1444044"
-        }
+          empId: '1444044'
+        };
       kuzzle.query(args, query, function(err, res) {
-        console.log(err)
-        console.log(res.result)
-      })
+        console.log(err);
+        console.log(res.result);
+      });
     }
   },
 
   created() {
-    this.$store.dispatch(UPDATE_USERLIST, {});
-    this.$store.dispatch(UPDATE_TIMESHEETS, {})
+    this.$store.dispatch(UPDATE_USERLIST, {})
+    this.$store.dispatch(UPDATE_TIMESHEETS, {});
   },
   mounted() {
     // console.log(this.users.users.documents)
   },
   watch: {}
-};
+}
 </script>
 
 <style scoped>
