@@ -94,6 +94,7 @@ import {
   DO_LOGIN,
   PREPARE_SESSION
 } from '../../../vuex/modules/auth/mutation-types';
+import { DO_CLOCKIN } from '../../../vuex/modules/users/mutation-types';
 import kuzzle from '../../../services/kuzzle';
 import Vue from "vue";
 import VueSignaturePad from "vue-signature-pad";
@@ -167,10 +168,17 @@ export default {
           password: this.password
         })
         .then(() => {
-          this.onLogin()
-        })
-        .catch(err => {
-          this.error = err.message
+          this.$store
+            .dispatch(DO_CLOCKIN, {
+              username: this.username,
+              password: this.password
+            })
+            .then(() => {
+              this.onLogin()
+            })
+            .catch(err => {
+              this.error = err.message
+            })
         })
     },
     loginAsGuest() {
