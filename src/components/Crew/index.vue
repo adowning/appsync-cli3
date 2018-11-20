@@ -78,7 +78,8 @@ export default {
   props: {},
   data() {
     return {
-      selected: [0]
+      selected: [0],
+      userList: []
     }
   },
   computed: {
@@ -155,9 +156,17 @@ export default {
   created() {
     for (var t of this.timeSheets) {
       if (t.content.out_timestamp == "0") {
-        console.log(t.content.employee.id)
+        // console.log(t.content.employee.id)
         for (var u of this.users) {
           // console.log(u)
+          if (u.id == t.content.employee.id) {
+            console.log('math')
+            var userItem = {
+              user: u,
+              timeSheet: t
+            }
+            this.userList.push(userItem);
+          }
         }
       }
     }
