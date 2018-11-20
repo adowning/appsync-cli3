@@ -94,7 +94,10 @@ import {
   DO_LOGIN,
   PREPARE_SESSION
 } from "../../../vuex/modules/auth/mutation-types";
-import { DO_CLOCKIN } from "../../../vuex/modules/users/mutation-types";
+import {
+  DO_CLOCKIN,
+  UPDATE_TIMESHEETS
+} from "../../../vuex/modules/users/mutation-types";
 import kuzzle from "../../../services/kuzzle";
 import Vue from 'vue';
 import VueSignaturePad from 'vue-signature-pad';
@@ -171,6 +174,9 @@ export default {
         .then(() => {
           this.$store
             .dispatch(DO_CLOCKIN, this.userid)
+            .then(() => {
+              this.$store.dispatch(UPDATE_TIMESHEETS, this.userid)
+            })
             .then(() => {
               this.onLogin();
             })
