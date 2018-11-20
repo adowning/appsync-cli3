@@ -89,23 +89,23 @@
 </style>
 
 <script>
-import Focus from "../../../directives/focus.directive";
+import Focus from '../../../directives/focus.directive';
 import {
   DO_LOGIN,
   PREPARE_SESSION
-} from "../../../vuex/modules/auth/mutation-types";
+} from '../../../vuex/modules/auth/mutation-types';
 import {
   DO_CLOCKIN,
   UPDATE_TIMESHEETS
-} from "../../../vuex/modules/users/mutation-types";
-import kuzzle from "../../../services/kuzzle";
-import Vue from 'vue';
-import VueSignaturePad from 'vue-signature-pad';
-import { QrcodeStream } from "vue-qrcode-reader";
+} from '../../../vuex/modules/users/mutation-types';
+import kuzzle from '../../../services/kuzzle';
+import Vue from "vue";
+import VueSignaturePad from "vue-signature-pad";
+import { QrcodeStream } from 'vue-qrcode-reader';
 
-Vue.use(VueSignaturePad);
+Vue.use(VueSignaturePad)
 export default {
-  name: "LoginForm",
+  name: 'LoginForm',
   props: {
     onLogin: Function
   },
@@ -126,9 +126,9 @@ export default {
       select: false,
       userList: [],
       checkboxId: false,
-      error: "",
+      error: '',
       bytes: null
-    };
+    }
   },
   mounted() {
     // var that = this;
@@ -141,31 +141,31 @@ export default {
   },
   methods: {
     onDecode(_code) {
-      var code = JSON.parse(_code)
+      var code = JSON.parse(_code);
       if (code.name) {
-        this.username = code.name
-        this.password = code.password
-        this.scanned = true
+        this.username = code.name;
+        this.password = code.password;
+        this.scanned = true;
       } else {
-        this.error = "bad scan";
+        this.error = 'bad scan';
         // location.reload()
       }
     },
     onEnd() {
-      this.bytes = VueSignaturePad.data().signatureData.src;
-      this.signed = true;
+      this.bytes = VueSignaturePad.data().signatureData.src
+      this.signed = true
     },
     dismissError() {
-      this.error = "";
-      location.reload();
+      this.error = '';
+      location.reload()
     },
     reload() {},
     login() {
-      this.error = "";
-      this.$store;
-      this.username = "ttest";
-      this.password = "asdfasdf";
-      this.userid = '1444044';
+      this.error = '';
+      this.$store
+      this.username = 'ttest';
+      this.password = 'asdfasdf';
+      this.userid = "1444044";
       this.$store
         .dispatch(DO_LOGIN, {
           username: this.username,
@@ -175,28 +175,29 @@ export default {
           this.$store
             .dispatch(DO_CLOCKIN, this.userid)
             .then(() => {
-              this.$store.dispatch(UPDATE_TIMESHEETS, this.userid)
+              console.log("updaing sheets");
+              this.$store.dispatch(UPDATE_TIMESHEETS, {});
             })
             .then(() => {
-              this.onLogin();
+              this.onLogin()
             })
             .catch(err => {
-              this.error = err.message;
-            });
-        });
+              this.error = err.message
+            })
+        })
     },
     loginAsGuest() {
-      this.error = "";
-      kuzzle.unsetJwtToken();
+      this.error = '';
+      kuzzle.unsetJwtToken()
       this.$store
-        .dispatch(PREPARE_SESSION, "anonymous")
+        .dispatch(PREPARE_SESSION, 'anonymous')
         .then(() => {
-          this.onLogin();
+          this.onLogin()
         })
         .catch(err => {
-          this.error = err.message;
-        });
+          this.error = err.message
+        })
     }
   }
-};
+}
 </script>
