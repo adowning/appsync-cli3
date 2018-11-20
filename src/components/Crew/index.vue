@@ -3,12 +3,14 @@
     <v-btn block outline warning @click="test();">clock in</v-btn>
     <v-btn block outline warning @click="test2();">clock out</v-btn>
     <v-btn block outline warning @click="test3();"> test</v-btn>
+    <v-btn block outline warning @click="test4();"> test store</v-btn>
   </div>
 </template>
 
 <script>
 /* This Component is a template. */
 import kuzzle from '../../services/kuzzle';
+import { DO_CLOCKIN } from '../../vuex/modules/users/mutation-types';
 
 export default {
   name: "Crew",
@@ -19,6 +21,16 @@ export default {
   },
   computed: {},
   methods: {
+    async test4() {
+      this.$store
+        .dispatch(DO_CLOCKIN, this.userid)
+        .then(() => {
+          this.onLogin();
+        })
+        .catch(err => {
+          this.error = err.message;
+        });
+    },
     async test() {
       const args = {
           controller: "kuzzle-core-plugin-boilerplate/clockPunch",
