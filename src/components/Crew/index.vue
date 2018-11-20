@@ -7,7 +7,7 @@
             <!-- <v-toolbar-side-icon></v-toolbar-side-icon> -->
             <v-toolbar-title>Crew list</v-toolbar-title>
             <v-spacer></v-spacer>
-            <v-btn icon> <v-icon>menu</v-icon> </v-btn>
+            <v-btn icon> <v-icon>fa-bars</v-icon> </v-btn>
           </v-toolbar>
 
           <v-list two-line>
