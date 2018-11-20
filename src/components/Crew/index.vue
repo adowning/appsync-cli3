@@ -70,7 +70,8 @@ import kuzzle from '../../services/kuzzle';
 import { DO_CLOCKIN } from '../../vuex/modules/users/mutation-types';
 import {
   UPDATE_USERLIST,
-  UPDATE_TIMESHEETS
+  UPDATE_TIMESHEETS,
+  DEVICE_USERLIST
 } from '../../vuex/modules/users/mutation-types';
 
 export default {
@@ -151,23 +152,24 @@ export default {
   },
 
   beforeCreate() {
-    this.$store.dispatch(UPDATE_USERLIST, {});
-    this.$store.dispatch(UPDATE_TIMESHEETS, {})
+    // this.$store.dispatch(UPDATE_USERLIST, {});
+    // this.$store.dispatch(UPDATE_TIMESHEETS, {})
+    this.$store.dispatch(DEVICE_USERLIST, {})
   },
   created() {
-    for (var t of this.timeSheets) {
-      if (t.content.out_timestamp == '0') {
-        for (var u of this.users) {
-          if (u.id == t.content.employee.id) {
-            var userItem = {
-              user: u,
-              timeSheet: t
-            };
-            this.userList.push(userItem)
-          }
-        }
-      }
-    }
+    // for (var t of this.timeSheets) {
+    //   if (t.content.out_timestamp == "0") {
+    //     for (var u of this.users) {
+    //       if (u.id == t.content.employee.id) {
+    //         var userItem = {
+    //           user: u,
+    //           timeSheet: t
+    //         }
+    //         this.userList.push(userItem);
+    //       }
+    //     }
+    //   }
+    // }
   },
   watch: {}
 };
