@@ -16,7 +16,9 @@
                   <img :src="item.content.photo_url" />
                 </v-list-tile-avatar>
                 <v-list-tile-content>
-                  <v-list-tile-title>{{ item.id }}</v-list-tile-title>
+                  <v-list-tile-title>{{
+                    item.content.photo_url.url
+                  }}</v-list-tile-title>
                   <v-list-tile-title>{{ item.id }}</v-list-tile-title>
                   <v-list-tile-sub-title class="text--primary">{{
                     item.id
@@ -49,7 +51,7 @@
       </v-flex>
     </v-layout>
 
-    {{ users[2].content }}
+    {{ users[2].content.photo_url.url }}
     <v-btn block outline warning @click="test();">clock in</v-btn>
     <v-btn block outline warning @click="test2();">clock out</v-btn>
     <v-btn block outline warning @click="test3();"> test</v-btn>
