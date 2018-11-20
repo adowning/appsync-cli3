@@ -12,8 +12,8 @@
           <v-list two-line>
             <template v-for="(item, index) in users">
               <v-list-tile :key="item.id" avatar ripple @click="toggle(index);">
-                <v-list-tile-avatar>
-                  <img :src="item.content.photo_url" />
+                <v-list-tile-avatar v-if="item.content.photo_url.url">
+                  <img :src="item.content.photo_url.url" />
                 </v-list-tile-avatar>
                 <v-list-tile-content>
                   <v-list-tile-title>{{
