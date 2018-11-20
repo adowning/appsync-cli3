@@ -36,7 +36,7 @@ export default {
           indexName: 'playground',
           collectionName: 'test'
         })
-        console.log(response)
+        console.log(response._result)
       } catch (error) {
         console.log(error)
       }
