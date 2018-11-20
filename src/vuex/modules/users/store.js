@@ -20,7 +20,15 @@ const actions = {
   async [types.DO_CLOCKIN]({ commit, dispatch }, id) {
     // var status = await clockInUser(id);
     var status = await clockInUser(id)
-     dispatch(types.UPDATE_TIMESHEETS, status)
+    console.log(status);
+    var timeSheets = await performSearchDocuments(
+      'timeSheets',
+      'playground',
+      {},
+      50,
+      {}
+    )
+    commit(types.TIMESHEETS, timeSheets)
   },
   async [types.UPDATE_TIMESHEETS]({ commit, dispatch }) {
     var timeSheets = await performSearchDocuments(
