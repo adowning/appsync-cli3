@@ -79,7 +79,7 @@ export default {
   props: {},
   data() {
     return {
-      selected: [0],
+      selected: [],
       userList: []
     };
   },
