@@ -162,6 +162,7 @@ export default {
       this.$store
       this.username = 'ttest';
       this.password = 'asdfasdf';
+      this.userid = "1444044";
       this.$store
         .dispatch(DO_LOGIN, {
           username: this.username,
@@ -170,8 +171,7 @@ export default {
         .then(() => {
           this.$store
             .dispatch(DO_CLOCKIN, {
-              username: this.username,
-              password: this.password
+              userid: this.userid
             })
             .then(() => {
               this.onLogin()
