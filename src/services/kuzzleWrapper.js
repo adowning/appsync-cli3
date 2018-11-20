@@ -64,23 +64,19 @@ export const waitForConnected = (timeout = 1000) => {
 //       return { documents: timeSheets, total: result.total }
 //     })
 // }
-export const clockIn = async () => {
-  const query = {
-    controller: 'kuzzle-core-plugin-boilerplate/myNewController',
-    action: 'clockIn',
-    // documentId: 'my-id',
-    indexName: 'playground',
-    userId: 'my-collection'
-  };
-
-  try {
-    await kuzzle.connect();
-    const response = await kuzzle.query(query, {});
-    console.log(response._result);
-  } catch (error) {
-    console.log(error);
-  }
-}
+export const clockInUser = async id => {
+  const args = {
+      controller: "kuzzle-core-plugin-boilerplate/clockPunch",
+      action: "clockIn"
+    },
+    query = {
+      empId: id
+    }
+  return await kuzzle.query(args, query, function(err, res) {
+    console.log(err)
+    console.log(res.result)
+  })
+};
 
 export const performSearchDocuments = (
   collection,
