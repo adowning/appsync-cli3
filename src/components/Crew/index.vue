@@ -20,7 +20,10 @@ export default {
     async test() {
       const query = {
         controller: "kuzzle-core-plugin-boilerplate/myNewController",
-        action: "myNewAction"
+        action: "myNewAction",
+        body: {
+          asdf: "asdf"
+        }
         // documentId: "2342344",
         // indexName: "playground",
         // collectionName: "test"
@@ -28,7 +31,9 @@ export default {
 
       try {
         await kuzzle.connect()
-        const response = await kuzzle.query(query, {})
+        const response = await kuzzle.query(query, {
+          asdf: 'asdf'
+        })
         console.log(response)
       } catch (error) {
         console.log(error)
