@@ -20,7 +20,7 @@ export default {
     async test() {
       const query = {
         controller: "kuzzle-core-plugin-boilerplate/myNewController",
-        action: "getDocument",
+        action: "myNewAction",
         body: {
           asdxxf: "asxxdf"
         }
