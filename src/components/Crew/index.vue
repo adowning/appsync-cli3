@@ -12,47 +12,48 @@
           <v-list two-line>
             <template v-for="(item, index) in users">
               <v-list-tile :key="item.id" avatar ripple @click="toggle(index);">
-                <!-- <v-list-tile-avatar>
-                  <img :src="item.id" />
-                </v-list-tile-avatar>
-                <v-list-tile-content>
-                  <v-list-tile-title>{{ item.id }}</v-list-tile-title>
-                  <v-list-tile-title>{{ item.id }}</v-list-tile-title>
-                  <v-list-tile-sub-title class="text--primary">{{
-                    item.id
-                  }}</v-list-tile-sub-title>
-                  <v-list-tile-sub-title>{{ item.id }}</v-list-tile-sub-title>
-                </v-list-tile-content>
+                <!--
+                  <v-list-tile-avatar>
+                    <img :src="item.id" />
+                  </v-list-tile-avatar>
+                  <v-list-tile-content>
+                    <v-list-tile-title>{{ item.id }}</v-list-tile-title>
+                    <v-list-tile-title>{{ item.id }}</v-list-tile-title>
+                    <v-list-tile-sub-title class="text--primary">{{
+                      item.id
+                    }}</v-list-tile-sub-title>
+                    <v-list-tile-sub-title>{{ item.id }}</v-list-tile-sub-title>
+                  </v-list-tile-content>
 
-                <v-list-tile-action>
-                  <v-list-tile-action-text>{{
-                    item.id
-                  }}</v-list-tile-action-text>
-                  <v-icon
-                    v-if="selected.indexOf(index) < 0"
-                    color="grey lighten-1"
-                  >
-                    star_border
-                  </v-icon>
-
-                  <v-icon v-else color="yellow darken-2"> star </v-icon>
-                </v-list-tile-action>
-                <v-list-tile-action>
-                  <v-list-tile-action-text>{{
-                    item.id
-                  }}</v-list-tile-action-text> -->
-                  <!--
-                      <v-icon
-                        v-if="selected.indexOf(index) < 0"
-                        color="grey lighten-1"
-                      >
-                        star_border
-                      </v-icon>
+                  <v-list-tile-action>
+                    <v-list-tile-action-text>{{
+                      item.id
+                    }}</v-list-tile-action-text>
+                    <v-icon
+                      v-if="selected.indexOf(index) < 0"
+                      color="grey lighten-1"
+                    >
+                      star_border
+                    </v-icon>
 
                     <v-icon v-else color="yellow darken-2"> star </v-icon>
-                  -->
-                <!-- </v-list-tile-action>
-              </v-list-tile> -->
+                  </v-list-tile-action>
+                  <v-list-tile-action>
+                    <v-list-tile-action-text>{{
+                      item.id
+                    }}</v-list-tile-action-text>
+                        <v-icon
+                          v-if="selected.indexOf(index) < 0"
+                          color="grey lighten-1"
+                        >
+                          star_border
+                        </v-icon>
+
+                      <v-icon v-else color="yellow darken-2"> star </v-icon>
+
+                  </v-list-tile-action>
+                -->
+              </v-list-tile>
 
               <v-divider
                 v-if="index + 1 < users.length"
@@ -64,7 +65,7 @@
       </v-flex>
     </v-layout>
 
-    {{ users.users.documents }}
+    {{ users }}
     <v-btn block outline warning @click="test();">clock in</v-btn>
     <v-btn block outline warning @click="test2();">clock out</v-btn>
     <v-btn block outline warning @click="test3();"> test</v-btn>
@@ -152,7 +153,7 @@ export default {
     this.$store.dispatch(UPDATE_TIMESHEETS, {})
   },
   mounted() {
-    console.log(this.users.users.documents)
+    // console.log(this.users.users.documents)
   },
   watch: {}
 };
