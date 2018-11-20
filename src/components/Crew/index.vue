@@ -154,8 +154,11 @@ export default {
   },
   created() {
     for (var t of this.timeSheets) {
-      for (var u of users) {
-        console.log(u._id);
+      console.log(t.content.out_timestamp);
+      if (t.content.out_timestamp != 0) {
+        for (var u of this.users) {
+          if (u.id == t.content.employee.id) console.log("match");
+        }
       }
     }
   },
