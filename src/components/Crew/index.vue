@@ -28,9 +28,12 @@
                 </v-list-tile-content>
 
                 <v-list-tile-action>
-                  <v-list-tile-action-text>{{
-                    item.timeSheet.content.in_timestamp
-                  }}</v-list-tile-action-text>
+                  <v-list-tile-action-text>
+                    {{
+                      item.timeSheet.content.in_time.time
+                    }}</v-list-tile-action-text
+                  >
+
                   <v-icon
                     v-if="selected.indexOf(index) < 0"
                     color="grey lighten-1"
