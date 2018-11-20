@@ -54,7 +54,7 @@
       </v-layout>
     -->
 
-    {{ timeSheets[3].content.out_timestamp }}
+    {{ timeSheets[1].content.out_timestamp }}
     <v-btn block outline warning @click="test();">clock in</v-btn>
     <v-btn block outline warning @click="test2();">clock out</v-btn>
     <v-btn block outline warning @click="test3();"> test</v-btn>
