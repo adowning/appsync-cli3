@@ -20,44 +20,21 @@ export default {
     async test() {
       const args = {
           controller: 'kuzzle-core-plugin-boilerplate/myNewController',
-          action: 'myNewAction'
+          action: 'getDocument'
         },
         query = {
+          documentId: '2342344',
+          indexName: 'playground',
+          collectionName: 'test',
           body: {
             property: 'bar'
           },
           other: 'argument'
         };
-
-      // Using callbacks (NodeJS or Web Browser)
       kuzzle.query(args, query, function(err, res) {
         console.log(err);
         console.log(res.result);
       });
-      // const query = {
-      //   controller: 'kuzzle-core-plugin-boilerplate/myNewController',
-      //   action: 'myNewAction',
-      //   index: 'playground',
-      //   body: {
-      //     "asdxxf": 'asxxdf'
-      //   }
-      //   // documentId: "2342344",
-      //   // indexName: "playground",
-      //   // collectionName: "test"
-      // };
-
-      // try {
-      //   // await kuzzle.connect();
-      //   // const response = await kuzzle.query(query, {
-      //   //   documentId: '2342344',
-      //   //   indexName: 'playground',
-      //   //   collectionName: 'test'
-      //   // })
-      //   const response = await kuzzle.query(query, {});
-      //   console.log(response._result);
-      // } catch (error) {
-      //   console.log(error);
-      // }
     }
   },
   created() {},
