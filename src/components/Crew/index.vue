@@ -20,16 +20,10 @@ export default {
     async test() {
       const args = {
           controller: 'kuzzle-core-plugin-boilerplate/myNewController',
-          action: 'getDocument'
+          action: 'clockIn'
         },
         query = {
-          documentId: '2342344',
-          indexName: 'playground',
-          collectionName: 'test',
-          body: {
-            property: 'bar'
-          },
-          other: 'argument'
+          userId: '1444044'
         };
       kuzzle.query(args, query, function(err, res) {
         console.log(err);
