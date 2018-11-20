@@ -6,35 +6,35 @@
 
 <script>
 /* This Component is a template. */
-import kuzzle from "../../services/kuzzle";
+import kuzzle from '../../services/kuzzle';
 
 export default {
-  name: 'Crew',
+  name: "Crew",
   components: {},
   props: {},
   data() {
-    return {}
+    return {};
   },
   computed: {},
   methods: {
     async test() {
       const args = {
-          controller: 'kuzzle-core-plugin-boilerplate/myNewController',
-          action: 'clockIn'
+          controller: "kuzzle-core-plugin-boilerplate/clockPunch",
+          action: "clockIn"
         },
         query = {
-          userId: '1444044'
-        };
+          userId: "1444044"
+        }
       kuzzle.query(args, query, function(err, res) {
-        console.log(err);
-        console.log(res.result);
-      });
+        console.log(err)
+        console.log(res.result)
+      })
     }
   },
   created() {},
   mounted() {},
   watch: {}
-}
+};
 </script>
 
 <style scoped lang="scss">
