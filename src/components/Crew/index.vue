@@ -11,19 +11,14 @@
           </v-toolbar>
 
           <v-list two-line>
-            <template v-for="(item, index) in items">
-              <v-list-tile
-                :key="item.title"
-                avatar
-                ripple
-                @click="toggle(index);"
-              >
+            <template v-for="(item, index) in users">
+              <v-list-tile :key="item.id" avatar ripple @click="toggle(index);">
                 <v-list-tile-avatar>
                   <img :src="item.avatar" />
                 </v-list-tile-avatar>
                 <v-list-tile-content>
-                  <v-list-tile-title>{{ item.title }}</v-list-tile-title>
-                  <v-list-tile-title>{{ item.title }}</v-list-tile-title>
+                  <v-list-tile-title>{{ item.id }}</v-list-tile-title>
+                  <v-list-tile-title>{{ item.id }}</v-list-tile-title>
                   <v-list-tile-sub-title class="text--primary">{{
                     item.headline
                   }}</v-list-tile-sub-title>
@@ -78,86 +73,88 @@
 
 <script>
 /* This Component is a template. */
-import { mapState } from "vuex";
-import kuzzle from '../../services/kuzzle';
-import { DO_CLOCKIN } from '../../vuex/modules/users/mutation-types';
+import { mapState } from 'vuex';
+import kuzzle from "../../services/kuzzle";
+import { DO_CLOCKIN } from "../../vuex/modules/users/mutation-types";
 import {
   UPDATE_USERLIST,
   UPDATE_TIMESHEETS
-} from '../../vuex/modules/users/mutation-types';
+} from "../../vuex/modules/users/mutation-types";
 
 export default {
-  name: "Crew",
+  name: 'Crew',
   components: {},
   props: {},
   data() {
-    return {};
+    return {}
   },
   computed: {
     ...mapState({
-      items: state => state.users.documents,
+      users: state => state.users.documents,
       owner: state => state.owner
     })
   },
   methods: {
     async test4() {
       this.$store
-        .dispatch(DO_CLOCKIN, '1444044')
+        .dispatch(DO_CLOCKIN, "1444044")
         .then(() => {
-          this.onLogin();
+          this.onLogin()
         })
         .catch(err => {
-          this.error = err.message;
-        });
+          this.error = err.message
+        })
     },
     async test() {
       const args = {
-          controller: "kuzzle-core-plugin-boilerplate/clockPunch",
-          action: "clockIn"
+          controller: 'kuzzle-core-plugin-boilerplate/clockPunch',
+          action: 'clockIn'
         },
         query = {
-          empId: "1444044"
-        }
+          empId: '1444044'
+        };
       kuzzle.query(args, query, function(err, res) {
-        console.log(err)
-        console.log(res.result)
-      })
+        console.log(err);
+        console.log(res.result);
+      });
     },
     async test2() {
       const args = {
-          controller: "kuzzle-core-plugin-boilerplate/clockPunch",
-          action: "clockOut"
+          controller: 'kuzzle-core-plugin-boilerplate/clockPunch',
+          action: 'clockOut'
         },
         query = {
-          empId: "1444044"
-        }
+          empId: '1444044'
+        };
       kuzzle.query(args, query, function(err, res) {
-        console.log(err)
-        console.log(res)
-      })
+        console.log(err);
+        console.log(res);
+      });
     },
     async test3() {
       const args = {
-          controller: "kuzzle-core-plugin-boilerplate/clockPunch",
-          action: "test"
+          controller: 'kuzzle-core-plugin-boilerplate/clockPunch',
+          action: 'test'
         },
         query = {
-          empId: "1444044"
-        }
+          empId: '1444044'
+        };
       kuzzle.query(args, query, function(err, res) {
-        console.log(err)
-        console.log(res.result)
-      })
+        console.log(err);
+        console.log(res.result);
+      });
     }
   },
 
-  created() {},
+  created() {
+    this.$store.dispatch(UPDATE_USERLIST, {})
+    this.$store.dispatch(UPDATE_TIMESHEETS, {});
+  },
   mounted() {
-    this.$store.dispatch(UPDATE_USERLIST, {});
-    this.$store.dispatch(UPDATE_TIMESHEETS, {})
+    console.log(this.users);
   },
   watch: {}
-};
+}
 </script>
 
 <style scoped>
