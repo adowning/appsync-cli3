@@ -43,6 +43,11 @@
               @environment::delete="deleteEnvironment"
             >
             </router-view>
+            <input
+              type="button"
+              value="Say hello"
+              :onClick="showAndroidToast('Hello Android!')"
+            />
           </div>
         </div>
       </div>
@@ -117,6 +122,9 @@ export default {
     editEnvironment(id) {
       this.environmentId = id;
       this.isOpen = true;
+    },
+    showAndroidToast() {
+      window.Android.showToast("asdf");
     },
     deleteEnvironment(id) {
       this.environmentId = id;
