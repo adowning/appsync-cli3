@@ -184,6 +184,8 @@ export default {
             return guid
         },
         async createEnvironment() {
+            console.log('jere')
+            console.log($)
             var uagent = navigator.userAgent.split(' ')
             var deviceId = null
             this.errors.name = !this.environment.name
@@ -191,7 +193,7 @@ export default {
                 deviceId = uagent.split('ANDROID_ID=')[1]
             } else {
                 this.errors.deviceId = 'Unkown device Id'
-                let ip = await this.$.getJSON(
+                let ip = await $.getJSON(
                     'https://jsonip.com?callback=?',
                     function(data) {
                         return data.ip
