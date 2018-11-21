@@ -6,7 +6,7 @@ public class Constants {
     }
 
     // Root page
-    public static String WEBAPP_URL = "http://192.168.1.10:8082/";
+    public static String WEBAPP_URL = "http://192.168.1.10:8080/";
     public static String WEBAPP_HOST = "ashdevtools.com"; // used for checking Intent-URLs
 
     // User Agent tweaks
