@@ -31,10 +31,10 @@ services:
   redis:
     image: redis:3.2
 
-  # elasticsearch:
-  #   image: kuzzleio/elasticsearch:5.4.1
-  #   ulimits:
-  #     nofile: 65536
-  #   environment:
-  #     - cluster.name=kuzzle
-  #     - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+  elasticsearch:
+    image: kuzzleio/elasticsearch:5.4.1
+    ulimits:
+      nofile: 65536
+    environment:
+      - cluster.name=kuzzle
+      - "ES_JAVA_OPTS=-Xms1024m -Xmx2014m"
