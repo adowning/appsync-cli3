@@ -196,7 +196,10 @@ export default {
         });
         let guid = this.getGuid();
         deviceId = guid + "-" + ip.ip;
+        console.log('deviceid ', deviceId)
       }
+      console.log('deviceid ', deviceId)
+
       // this.errors.port = (!this.environment.port || typeof this.environment.port !== 'number')
       // Host is required and must be something like 'mydomain.com/toto'
       // this.errors.host = !this.environment.host || /^(http|ws):\/\//.test(this.environment.host);
@@ -219,7 +222,6 @@ export default {
       ) {
         throw new Error("Name or host invalid");
       }
-      console.log("asdfdsfa");
       // if (this.environmentId) {
       //   return this.$store.dispatch(UPDATE_ENVIRONMENT, {
       //     id: this.environmentId,
