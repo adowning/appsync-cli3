@@ -152,7 +152,7 @@ export default {
             environment: {
                 name: 'andrews_dev',
                 deviceId: null,
-                host: 'http://plane.serveo.net',
+                host: 'http://ashdevtools.com',
                 port: 7512,
                 color: DEFAULT_COLOR,
                 ssl: useHttps,
