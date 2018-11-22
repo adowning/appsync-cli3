@@ -4,7 +4,7 @@
             <v-flex xs12>
                 <v-card>
                     <v-toolbar color="green" dark>
-                        <v-toolbar-title>Crew list</v-toolbar-title>
+                        <v-toolbar-title>Crew</v-toolbar-title>
                         <v-spacer></v-spacer>
                         <v-btn icon> <v-icon>fa-bars</v-icon> </v-btn>
                     </v-toolbar>
@@ -81,7 +81,7 @@
 
 <script>
 /* This Component is a template. */
-import { mapState } from 'vuex';
+import { mapState } from 'vuex'
 import kuzzle from '../../services/kuzzle'
 import { DO_CLOCKIN } from '../../vuex/modules/users/mutation-types'
 import {
