@@ -152,7 +152,7 @@ export default {
             environment: {
                 name: 'andrews_dev',
                 deviceId: null,
-                host: 'http://ashdevtools.com',
+                host: 'http://plane.serveo.net',
                 port: 7512,
                 color: DEFAULT_COLOR,
                 ssl: useHttps,
@@ -268,7 +268,7 @@ export default {
             this.environment.ssl = this.environments[this.environmentId].ssl
         } else {
             this.environment.name = 'andrews_dev'
-            this.environment.host = 'ashdevtools.com'
+            this.environment.host = 'https://plane.serveo.net'
             this.environment.deviceId = null
             this.environment.port = 7512
             this.environment.color = DEFAULT_COLOR
