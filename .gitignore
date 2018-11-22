@@ -6,6 +6,7 @@ android
 # local env files
 .env.local
 .env.*.local
+plugin_dev_server
 
 # Log files
 npm-debug.log*
