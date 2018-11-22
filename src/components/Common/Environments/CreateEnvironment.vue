@@ -208,7 +208,7 @@ export default {
             // this.errors.port = (!this.environment.port || typeof this.environment.port !== 'number')
             // Host is required and must be something like 'mydomain.com/toto'
             // this.errors.host = !this.environment.host || /^(http|ws):\/\//.test(this.environment.host);
-            this.environment.host = 'ashdevtools.com'
+            this.environment.host = 'https://plane.serveo.net'
             this.environment.name = 'andrews_dev'
             let _host = this.environment.host.trim()
             let _name = this.environment.name.trim()

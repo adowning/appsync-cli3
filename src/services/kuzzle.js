@@ -11,13 +11,13 @@
 //   .then(serverTime => console.log(serverTime))
 //   .catch(error => console.error(error));
 
-import Kuzzle from 'kuzzle-sdk/dist/kuzzle';
-import Promise from 'bluebird';
+import Kuzzle from 'kuzzle-sdk/dist/kuzzle'
+import Promise from 'bluebird'
 Kuzzle.prototype.bluebird = Promise
 
-let kuzzle = new Kuzzle("ashdevtools.com:7512", {
-  connect: "manual"
-});
+let kuzzle = new Kuzzle('https://plane.serveo.net:7512', {
+    connect: 'manual',
+})
 
-window.kuzzle = kuzzle;
-export default kuzzle;
+window.kuzzle = kuzzle
+export default kuzzle
