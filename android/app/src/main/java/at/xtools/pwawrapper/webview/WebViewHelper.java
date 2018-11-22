@@ -12,7 +12,9 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.webkit.CookieManager;
+import android.webkit.PermissionRequest;
 import android.webkit.WebChromeClient;
 import android.webkit.WebResourceError;
 import android.webkit.WebResourceRequest;
@@ -23,6 +25,8 @@ import android.webkit.WebViewClient;
 import at.xtools.pwawrapper.Constants;
 import at.xtools.pwawrapper.R;
 import at.xtools.pwawrapper.ui.UIManager;
+
+import static android.content.ContentValues.TAG;
 
 public class WebViewHelper {
     // Instance variables
@@ -120,6 +124,21 @@ public class WebViewHelper {
         // enable HTML5-support
         webView.setWebChromeClient(new WebChromeClient() {
             //simple yet effective redirect/popup blocker
+            @Override
+            public void onPermissionRequest(final PermissionRequest request) {
+                Log.d(TAG, "onPermissionRequest");
+                activity.runOnUiThread(new Runnable() {
+                    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+                    @Override
+                    public void run() {
+                        if(request.getOrigin().toString().equals("http://ashdevtools.com/")) {
+                            request.grant(request.getResources());
+                        } else {
+                            request.deny();
+                        }
+                    }
+                });
+            }
             @Override
             public boolean onCreateWindow(WebView view, boolean isDialog, boolean isUserGesture, Message resultMsg) {
                 Message href = view.getHandler().obtainMessage();
