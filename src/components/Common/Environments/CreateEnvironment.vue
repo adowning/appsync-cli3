@@ -152,7 +152,7 @@ export default {
             environment: {
                 name: 'andrews_dev',
                 deviceId: null,
-                host: 'http://groupandrews.com',
+                host: 'https://groupandrews.com',
                 port: 7512,
                 color: DEFAULT_COLOR,
                 ssl: useHttps,
@@ -208,7 +208,7 @@ export default {
             // this.errors.port = (!this.environment.port || typeof this.environment.port !== 'number')
             // Host is required and must be something like 'mydomain.com/toto'
             // this.errors.host = !this.environment.host || /^(http|ws):\/\//.test(this.environment.host);
-            this.environment.host = 'http://groupandrews.com'
+            this.environment.host = 'https://groupandrews.com'
             this.environment.name = 'andrews_dev'
             let _host = this.environment.host.trim()
             let _name = this.environment.name.trim()
@@ -268,7 +268,7 @@ export default {
             this.environment.ssl = this.environments[this.environmentId].ssl
         } else {
             this.environment.name = 'andrews_dev'
-            this.environment.host = 'http://groupandrews.com'
+            this.environment.host = 'https://groupandrews.com'
             this.environment.deviceId = null
             this.environment.port = 7512
             this.environment.color = DEFAULT_COLOR

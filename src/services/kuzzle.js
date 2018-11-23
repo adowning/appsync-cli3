@@ -15,7 +15,7 @@ import Kuzzle from 'kuzzle-sdk/dist/kuzzle'
 import Promise from 'bluebird'
 Kuzzle.prototype.bluebird = Promise
 
-let kuzzle = new Kuzzle('http://ashdevtools.com:7512:7512', {
+let kuzzle = new Kuzzle('https://groupandrews.com:7512', {
     connect: 'manual',
 })
 
