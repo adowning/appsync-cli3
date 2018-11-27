@@ -23,6 +23,13 @@ Kuzzle.prototype.bluebird = Promise
 //   sslConnection: false
 // })
  const kuzzle = new Kuzzle('http', { host: 'localhost', port: 7512 })
-
+// kuzzle
+//   .connect()
+//   .then(() => {
+//     // You are now connected to your Kuzzle instance.
+//     return kuzzle.server.now();
+//   })
+//   .then(serverTime => console.log(serverTime))
+//   .catch(error => console.error(error));
 window.kuzzle = kuzzle
 export default kuzzle
