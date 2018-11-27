@@ -19,7 +19,8 @@ Kuzzle.prototype.bluebird = Promise
 //     connect: 'manual',
 // })
 let kuzzle = new Kuzzle('api.groupandrews.com', {
-    // connect: 'manual',
+  connect: 'manual',
+  sslConnection: true
 })
 
 window.kuzzle = kuzzle
