@@ -128,6 +128,7 @@ console.log(useHttps)
 console.log(useHttps)
 console.log(useHttps)
 console.log(useHttps)
+useHttps = false
 
 export default {
     name: 'CreateEnvironment',
