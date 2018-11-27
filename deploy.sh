@@ -3,9 +3,12 @@
 # abort on errors
 set -e
 
+rm force.txt
+echo  `date` > force.txt
+
 # build
 npm run build
-echo  `date +%s` > force.txt
+
 
 # navigate into the build output directory
 cd dist
@@ -26,4 +29,3 @@ git push -f git@github.com:adowning/appsync-cli3.git master:gh-pages
 
 cd -
 
-rm force.txt
