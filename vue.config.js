@@ -3,7 +3,7 @@ const fs = require('fs')
 
 module.exports = {
     baseUrl: '/',
-    outputDir: 'server/www/dist',
+    outputDir: 'dist',
     lintOnSave: true,
     runtimeCompiler: false,
     configureWebpack: {
