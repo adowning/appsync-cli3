@@ -110,8 +110,8 @@ import {
     UPDATE_TIMESHEETS,
 } from '../../../vuex/modules/users/mutation-types'
 import kuzzle from '../../../services/kuzzle'
-import Vue from 'vue';
-import VueSignaturePad from 'vue-signature-pad';
+import Vue from 'vue'
+import VueSignaturePad from 'vue-signature-pad'
 import { QrcodeStream } from 'vue-qrcode-reader'
 
 Vue.use(VueSignaturePad)

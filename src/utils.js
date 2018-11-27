@@ -7,6 +7,6 @@ export default {
    * @param {String} word the word to make DOM-friendly
    */
   formatForDom: word => {
-    return word.replace(/[!"#$%&'()*+,./:;<=>?@[\]^`{|}~ ]/g, "-");
+    return word.replace(/[!"#$%&'()*+,./:;<=>?@[\]^`{|}~ ]/g, '-')
   }
-};
+}

@@ -1,40 +1,40 @@
 export const kuzzleIsConnected = state => {
-  return state.connectedTo !== null;
-};
+  return state.connectedTo !== null
+}
 
 export const currentEnvironmentId = state => {
-  return state.connectedTo;
-};
+  return state.connectedTo
+}
 
 export const currentEnvironment = (state, getters) => {
   if (!state.environments[getters.currentEnvironmentId]) {
-    return null;
+    return null
   }
-  return state.environments[getters.currentEnvironmentId];
-};
+  return state.environments[getters.currentEnvironmentId]
+}
 
 export const hasEnvironment = state => {
-  return Object.keys(state.environments).length !== 0;
-};
+  return Object.keys(state.environments).length !== 0
+}
 
 export const kuzzleHost = state => {
-  return state.host;
-};
+  return state.host
+}
 
 export const deviceId = state => {
-  return state.deviceId;
-};
+  return state.deviceId
+}
 
 export const kuzzlePort = state => {
-  return state.port;
-};
+  return state.port
+}
 
 export const oldMappingSupport = (state, getters) => {
   if (!state.environments[getters.currentEnvironmentId]) {
-    return null;
+    return null
   }
 
   return /^2/.test(
     state.environments[getters.currentEnvironmentId].storageEngineVersion
-  );
-};
+  )
+}

@@ -50,13 +50,13 @@
 
 <script>
 // import MainMenu from './Common/MainMenu';
-import WarningHeader from './Common/WarningHeader';
-import LoginForm from './Common/Login/Form';
-import MyFooter from './Common/Footer';
-import Modal from './Materialize/Modal';
-import KuzzleDisconnected from './Error/KuzzleDisconnected';
-import kuzzle from '../services/kuzzle';
-import * as types from '../vuex/modules/auth/mutation-types';
+import WarningHeader from './Common/WarningHeader'
+import LoginForm from './Common/Login/Form'
+import MyFooter from './Common/Footer'
+import Modal from './Materialize/Modal'
+import KuzzleDisconnected from './Error/KuzzleDisconnected'
+import kuzzle from '../services/kuzzle'
+import * as types from '../vuex/modules/auth/mutation-types'
 
 export default {
   name: 'Home',
@@ -106,7 +106,7 @@ export default {
     '$store.state.kuzzle.connectedTo'(isConnected) {
       if (!isConnected) {
         this.kuzzleDisconnectedIsOpen = true
-        return;
+        return
       }
       this.kuzzleDisconnectedIsOpen = false
     }

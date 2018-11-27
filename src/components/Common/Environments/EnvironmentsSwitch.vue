@@ -59,44 +59,44 @@
 </template>
 
 <script>
-import { DEFAULT_COLOR } from "../../../services/environment";
-import { SWITCH_ENVIRONMENT } from "../../../vuex/modules/common/kuzzle/mutation-types";
-import tinycolor from "tinycolor2/tinycolor";
-import Promise from "bluebird";
-import { SET_TOAST } from "../../../vuex/modules/common/toaster/mutation-types";
+import { DEFAULT_COLOR } from '../../../services/environment'
+import { SWITCH_ENVIRONMENT } from '../../../vuex/modules/common/kuzzle/mutation-types'
+import tinycolor from 'tinycolor2/tinycolor'
+import Promise from 'bluebird'
+import { SET_TOAST } from '../../../vuex/modules/common/toaster/mutation-types'
 // import { formatForDom } from '../../../utils'
 const formatForDom = word => {
-  return word.replace(/[!"#$%&'()*+,./:;<=>?@[\]^`{|}~ ]/g, "-");
-};
+  return word.replace(/[!"#$%&'()*+,./:;<=>?@[\]^`{|}~ ]/g, '-')
+}
 export default {
-  name: "EnvironmentsSwitch",
-  props: ["blendColor"],
+  name: 'EnvironmentsSwitch',
+  props: ['blendColor'],
   computed: {
     currentEnvironmentName() {
       if (!this.$store.getters.currentEnvironment) {
-        return null;
+        return null
       }
 
-      return this.$store.getters.currentEnvironment.name;
+      return this.$store.getters.currentEnvironment.name
     },
     bgColor() {
       if (!this.blendColor) {
-        return DEFAULT_COLOR;
+        return DEFAULT_COLOR
       }
 
-      let color;
+      let color
       if (!this.$store.getters.currentEnvironment) {
-        color = DEFAULT_COLOR;
+        color = DEFAULT_COLOR
       } else {
-        color = this.$store.getters.currentEnvironment.color;
+        color = this.$store.getters.currentEnvironment.color
       }
       if (!color) {
-        color = DEFAULT_COLOR;
+        color = DEFAULT_COLOR
       }
 
       return tinycolor(color)
         .lighten(10)
-        .toString();
+        .toString()
     }
   },
   methods: {
@@ -105,28 +105,28 @@ export default {
         .dispatch(SWITCH_ENVIRONMENT, id)
         .then(() => {
           /* Ugly hack in order to force Vue to refresh and pass in router.beforeEach and let check if user is auth */
-          this.$router.push({ path: "/fake-route" });
+          this.$router.push({ path: '/fake-route' })
           setTimeout(() => {
-            this.$router.push({ path: "/" });
-            return Promise.resolve();
-          }, 0);
+            this.$router.push({ path: '/' })
+            return Promise.resolve()
+          }, 0)
         })
         .catch(e => {
           this.$store.commit(
             SET_TOAST,
-            "An error occurred while switching environment"
-          );
-          return Promise.reject(e);
-        });
+            'An error occurred while switching environment'
+          )
+          return Promise.reject(e)
+        })
     },
     formatForDom
   },
   mounted() {
     $(this.$refs.dropdown)
-      .find(".dropdown-button")
-      .dropdown({ constrain_width: false, belowOrigin: true });
+      .find('.dropdown-button')
+      .dropdown({ constrain_width: false, belowOrigin: true })
   }
-};
+}
 </script>
 
 <style lang="scss" rel="stylesheet/scss" scoped>

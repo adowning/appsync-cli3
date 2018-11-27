@@ -39,9 +39,9 @@
 </style>
 
 <script>
-import LoginForm from './Common/Login/Form';
+import LoginForm from './Common/Login/Form'
 // import EnvironmentSwitch from "./Common/Environments/EnvironmentsSwitch";
-import * as types from '../vuex/modules/common/routing/mutation-types';
+import * as types from '../vuex/modules/common/routing/mutation-types'
 
 export default {
   name: 'Login',
@@ -62,7 +62,7 @@ export default {
       // After login, the index route is pushed to view router and the body overflow is
       // not set to his original state
       // see src/components/Materialize/Modale.vue#62
-      window.document.body.style.overflow = 'visible';
+      window.document.body.style.overflow = 'visible'
 
       if (this.$store.getters.routeBeforeRedirect) {
         this.$router.push({ name: this.$store.getters.routeBeforeRedirect })

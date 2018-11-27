@@ -88,11 +88,11 @@ export default {
   data: function () {
     return {
       objUpdate: {
-        humanity_id: "",
-        prop2: "",
-        prop3: "",
-        prop4: "",
-        prop5: ""
+        humanity_id: '',
+        prop2: '',
+        prop3: '',
+        prop4: '',
+        prop5: ''
       },
       showEditView: false,
       enableSave: false
@@ -102,26 +102,26 @@ export default {
     objUp: function () {
       return (
         this.objUpdate.humanity_id +
-        " " +
+        ' ' +
         this.objUpdate.prop2 +
-        " " +
+        ' ' +
         this.objUpdate.prop3 +
-        " " +
+        ' ' +
         this.objUpdate.prop4 +
-        " " +
+        ' ' +
         this.objUpdate.prop5
       )
     },
     objProp: function () {
       return (
         this.obj.humanity_id +
-        " " +
+        ' ' +
         this.obj.prop2 +
-        " " +
+        ' ' +
         this.obj.prop3 +
-        " " +
+        ' ' +
         this.obj.prop4 +
-        " " +
+        ' ' +
         this.obj.prop5
       )
     }
@@ -151,19 +151,19 @@ export default {
     } else {
       this.showEditView = false
     }
-    console.log("noedit: " + this.noedit)
-    console.log("showEdit: " + this.showEditView)
+    console.log('noedit: ' + this.noedit)
+    console.log('showEdit: ' + this.showEditView)
   },
   methods: {
     cancelEdit: function () {
       if (this.newEntry === true) {
-        this.$emit("close")
+        this.$emit('close')
         this.objUpdate = {
-          humanity_id: "",
-          prop2: "",
-          prop3: "",
-          prop4: "",
-          prop5: ""
+          humanity_id: '',
+          prop2: '',
+          prop3: '',
+          prop4: '',
+          prop5: ''
         }
       } else {
         this.objUpdate = JSON.parse(JSON.stringify(this.obj))
@@ -175,21 +175,21 @@ export default {
     },
     updateAttribute: function () {
       if (this.newEntry === true) {
-        this.$emit("add", this.objUpdate)
+        this.$emit('add', this.objUpdate)
         this.objUpdate = {
-          humanity_id: ""
+          humanity_id: ''
           // prop2: "",
           // prop3: "",
           // prop4: "",
           // prop5: ""
         }
       } else {
-        this.$emit("update", this.objUpdate)
+        this.$emit('update', this.objUpdate)
       }
       this.enableSave = false
     },
     deleteAttribute: function () {
-      this.$emit("delete")
+      this.$emit('delete')
     }
   },
 }

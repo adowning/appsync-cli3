@@ -1,10 +1,10 @@
-import * as types from './mutation-types';
+import * as types from './mutation-types'
 // import kuzzle from "../../services/kuzzle";
 import {
   performSearchUsers,
   performSearchDocuments,
   clockInUser
-} from '../../../services/kuzzleWrapper';
+} from '../../../services/kuzzleWrapper'
 
 const state = {
   users: [],
@@ -26,7 +26,7 @@ const actions = {
         query: {
           bool: {
             must: [
-              { match: { out_timestamp: "0" } }
+              { match: { out_timestamp: '0' } }
               // { match: { "employee.id": '1444044' } }
             ]
           }
@@ -42,7 +42,7 @@ const actions = {
   async [types.DO_CLOCKIN]({ commit, dispatch }, id) {
     // var status = await clockInUser(id);
     var status = await clockInUser(id)
-    console.log(status);
+    console.log(status)
     return status
     // var timeSheets = await performSearchDocuments(
     //   'timeSheets',

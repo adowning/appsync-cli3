@@ -13,7 +13,7 @@ const state = {
 export const mutations = {
   [types.CREATE_ENVIRONMENT](state, payload) {
     if (!payload) {
-      throw new Error(`The environment can't be falsy`)
+      throw new Error('The environment can\'t be falsy')
     }
     if (Object.keys(state.environments).indexOf(payload.id) !== -1) {
       throw new Error(

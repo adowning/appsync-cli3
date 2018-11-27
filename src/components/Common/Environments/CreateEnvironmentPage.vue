@@ -44,10 +44,10 @@
 </template>
 
 <script>
-import CreateEnvironment from "./CreateEnvironment";
+import CreateEnvironment from './CreateEnvironment'
 
 export default {
-  name: "CreateEnvironmentPage",
+  name: 'CreateEnvironmentPage',
   components: {
     CreateEnvironment
   },
@@ -56,10 +56,10 @@ export default {
       try {
         this.$refs.createEnvironmentComponent
           .createEnvironment()
-          .then(() => this.$router.push({ name: "Home" }))
-          .catch(e => console.error(e));
+          .then(() => this.$router.push({ name: 'Home' }))
+          .catch(e => console.error(e))
       } catch (e) {}
     }
   }
-};
+}
 </script>

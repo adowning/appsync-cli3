@@ -20,7 +20,7 @@ export default () => {
     token: undefined,
     params: {},
     rights: []
-  };
+  }
 }
 /*
 {

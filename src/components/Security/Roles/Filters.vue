@@ -40,12 +40,12 @@
 </template>
 
 <script>
-import MSelect from "../../Common/MSelect";
-import Multiselect from "vue-multiselect";
-import {} from "vue-multiselect/dist/vue-multiselect.min.css";
+import MSelect from '../../Common/MSelect'
+import Multiselect from 'vue-multiselect'
+import {} from 'vue-multiselect/dist/vue-multiselect.min.css'
 
 export default {
-  name: "RolesFilters",
+  name: 'RolesFilters',
   props: {
     currentFilter: Object
   },
@@ -56,43 +56,43 @@ export default {
   data() {
     return {
       controllers: []
-    };
+    }
   },
   methods: {
     submitSearch() {
       if (this.controllers.length === 0) {
-        this.$emit("filters-updated", null);
-        return;
+        this.$emit('filters-updated', null)
+        return
       }
 
-      this.$emit("filters-updated", { controllers: this.controllers });
+      this.$emit('filters-updated', { controllers: this.controllers })
     },
     resetSearch() {
-      this.controllers = [];
-      this.$emit("reset", null);
+      this.controllers = []
+      this.$emit('reset', null)
     },
     addController(value) {
       if (this.controllers.indexOf(value) !== -1) {
-        return;
+        return
       }
 
-      this.controllers.push(value);
+      this.controllers.push(value)
     },
     removeController(removedValue) {
       this.controllers = this.controllers.filter(
         value => value !== removedValue
-      );
+      )
     }
   },
   watch: {
     currentFilter: {
       immediate: true,
       handler(value) {
-        this.controllers = value && value.controllers ? value.controllers : [];
+        this.controllers = value && value.controllers ? value.controllers : []
       }
     }
   }
-};
+}
 </script>
 
 <style lang="scss">

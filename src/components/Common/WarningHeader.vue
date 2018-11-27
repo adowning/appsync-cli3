@@ -4,14 +4,14 @@
 
 <script>
 export default {
-  name: "WarningHeader",
+  name: 'WarningHeader',
   props: {
     text: {
       type: String,
       required: true
     }
   }
-};
+}
 </script>
 
 <style lang="scss">

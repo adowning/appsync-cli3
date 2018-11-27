@@ -41,7 +41,7 @@
 </template>
 <script>
 // import Connecting from "./Connecting";
-import EnvironmentSwitch from '../Common/Environments/EnvironmentsSwitch';
+import EnvironmentSwitch from '../Common/Environments/EnvironmentsSwitch'
 
 export default {
     name: 'KuzzleErrorPage',

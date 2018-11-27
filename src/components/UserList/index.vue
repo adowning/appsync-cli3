@@ -62,13 +62,13 @@
 
 <script>
 /* This Component is a template. */
-import { mapState } from 'vuex';
-import kuzzle from "../../services/kuzzle";
-import { DO_CLOCKIN } from "../../vuex/modules/users/mutation-types";
+import { mapState } from 'vuex'
+import kuzzle from '../../services/kuzzle'
+import { DO_CLOCKIN } from '../../vuex/modules/users/mutation-types'
 import {
   UPDATE_USERLIST,
   UPDATE_TIMESHEETS
-} from "../../vuex/modules/users/mutation-types";
+} from '../../vuex/modules/users/mutation-types'
 
 export default {
   name: 'Crew',
@@ -97,7 +97,7 @@ export default {
     },
     async test4() {
       this.$store
-        .dispatch(DO_CLOCKIN, "1444044")
+        .dispatch(DO_CLOCKIN, '1444044')
         .then(() => {
           this.onLogin()
         })
@@ -112,11 +112,11 @@ export default {
         },
         query = {
           empId: '1444044'
-        };
+        }
       kuzzle.query(args, query, function(err, res) {
-        console.log(err);
-        console.log(res.result);
-      });
+        console.log(err)
+        console.log(res.result)
+      })
     },
     async test2() {
       const args = {
@@ -125,11 +125,11 @@ export default {
         },
         query = {
           empId: '1444044'
-        };
+        }
       kuzzle.query(args, query, function(err, res) {
-        console.log(err);
-        console.log(res);
-      });
+        console.log(err)
+        console.log(res)
+      })
     },
     async test3() {
       const args = {
@@ -138,17 +138,17 @@ export default {
         },
         query = {
           empId: '1444044'
-        };
+        }
       kuzzle.query(args, query, function(err, res) {
-        console.log(err);
-        console.log(res.result);
-      });
+        console.log(err)
+        console.log(res.result)
+      })
     }
   },
 
   created() {
     this.$store.dispatch(UPDATE_USERLIST, {})
-    this.$store.dispatch(UPDATE_TIMESHEETS, {});
+    this.$store.dispatch(UPDATE_TIMESHEETS, {})
   },
   mounted() {
     // console.log(this.users.users.documents)

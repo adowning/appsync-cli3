@@ -59,4 +59,4 @@ export default [
   //     require(['../../components/Data/Documents/Update'], resolve)
   //   }
   // }
-];
+]

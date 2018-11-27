@@ -81,7 +81,7 @@ aside {
 </style>
 
 <script>
-import * as types from "../../vuex/modules/security/mutation-types";
+import * as types from '../../vuex/modules/security/mutation-types'
 // import {
 //   canManageUsers,
 //   canManageRoles,
@@ -89,35 +89,35 @@ import * as types from "../../vuex/modules/security/mutation-types";
 // } from "../../services/userAuthorization";
 
 export default {
-  name: "SecurityLayout",
+  name: 'SecurityLayout',
   methods: {
     // canManageUsers,
     // canManageRoles,
     // canManageProfiles,
     fetchMapping(v) {
       if (!v.meta) {
-        return;
+        return
       }
       switch (v.meta.section) {
-        case "users":
-          this.$store.dispatch(types.FETCH_USER_MAPPING);
-          break;
-        case "profiles":
-          this.$store.dispatch(types.FETCH_PROFILE_MAPPING);
-          break;
-        case "roles":
-          this.$store.dispatch(types.FETCH_ROLE_MAPPING);
-          break;
+        case 'users':
+          this.$store.dispatch(types.FETCH_USER_MAPPING)
+          break
+        case 'profiles':
+          this.$store.dispatch(types.FETCH_PROFILE_MAPPING)
+          break
+        case 'roles':
+          this.$store.dispatch(types.FETCH_ROLE_MAPPING)
+          break
       }
     }
   },
   mounted() {
-    this.fetchMapping(this.$route);
+    this.fetchMapping(this.$route)
   },
   watch: {
     $route(v) {
-      this.fetchMapping(v);
+      this.fetchMapping(v)
     }
   }
-};
+}
 </script>

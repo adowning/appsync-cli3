@@ -104,12 +104,12 @@
 </template>
 
 <script>
-import userName from './name.vue';
-import userEmail from './email.vue';
-import birthDate from './birthdate.vue';
-import phoneNumber from './phone.vue';
-import address from './address.vue';
-import custom from './custom.vue';
+import userName from './name.vue'
+import userEmail from './email.vue'
+import birthDate from './birthdate.vue'
+import phoneNumber from './phone.vue'
+import address from './address.vue'
+import custom from './custom.vue'
 // eslint-disable-next-line
 // var AmazonCognitoIdentity = require('amazon-cognito-identity-js')
 
@@ -161,7 +161,7 @@ export default {
       this.$store.state.cognitoUser.getUserAttributes((err, result) => {
         if (err) {
           console.log('get attribute error: ' + err)
-          return;
+          return
         }
         this.mapAttributes(result)
       })
@@ -237,7 +237,7 @@ export default {
         (err, result) => {
           if (err) {
             console.log('error: ' + err)
-            return;
+            return
           }
           console.log('call result: ' + result)
           this.userModel.birthDate = date
@@ -262,7 +262,7 @@ export default {
         (err, result) => {
           if (err) {
             console.log('error: ' + JSON.stringify(err))
-            return;
+            return
           }
           console.log('call result: ' + result)
           this.userModel.phoneNumber = JSON.parse(JSON.stringify(phone))
@@ -272,7 +272,7 @@ export default {
     updateAddress: function(newAddress, type) {
       console.log('updating address...')
       let attributeList = []
-      let addressJSON = '';
+      let addressJSON = ''
       if (type === 'home') {
         addressJSON = JSON.stringify(newAddress)
       } else if (type === 'business') {
@@ -293,7 +293,7 @@ export default {
         (err, result) => {
           if (err) {
             console.log('error: ' + JSON.stringify(err))
-            return;
+            return
           }
           console.log('call result: ' + result)
           if (type === 'home') {
@@ -345,7 +345,7 @@ export default {
         (err, result) => {
           if (err) {
             console.log('error: ' + JSON.stringify(err))
-            return;
+            return
           }
           console.log('call result: ' + result)
           console.log('custom attribute updated')

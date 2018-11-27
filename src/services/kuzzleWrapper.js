@@ -1,9 +1,9 @@
-import kuzzle from './kuzzle';
-import Promise from 'bluebird';
+import kuzzle from './kuzzle'
+import Promise from 'bluebird'
 // import * as actions from '../vuex/modules/auth/actions'
-import * as types from '../vuex/modules/auth/mutation-types';
-import * as kuzzleTypes from '../vuex/modules/common/kuzzle/mutation-types';
-import { SET_TOAST } from '../vuex/modules/common/toaster/mutation-types';
+import * as types from '../vuex/modules/auth/mutation-types'
+import * as kuzzleTypes from '../vuex/modules/common/kuzzle/mutation-types'
+import { SET_TOAST } from '../vuex/modules/common/toaster/mutation-types'
 
 Promise.config({
   // Enable warnings
@@ -34,7 +34,7 @@ export const waitForConnected = (timeout = 1000) => {
   }
 
   return Promise.resolve()
-};
+}
 
 // /*
 // ===========
@@ -65,19 +65,19 @@ export const waitForConnected = (timeout = 1000) => {
 //     })
 // }
 export const clockInUser = async id => {
-  console.log(id);
+  console.log(id)
   const args = {
       controller: 'kuzzle-core-plugin-boilerplate/clockPunch',
       action: 'clockIn'
     },
     query = {
       empId: id
-    };
+    }
   kuzzle.query(args, query, function(err, res) {
-    console.log(err);
-    console.log(res.result);
+    console.log(err)
+    console.log(res.result)
     return res
-  });
+  })
 }
 
 export const performSearchDocuments = (
@@ -125,7 +125,7 @@ export const performSearchDocuments = (
       })
       return { documents, total: result.total }
     })
-};
+}
 
 export const connectToEnvironment = environment => {
   // fix default port for users that have an old environment settings in their localStorage:
@@ -140,7 +140,7 @@ export const connectToEnvironment = environment => {
   kuzzle.port = environment.port
   kuzzle.sslConnection = environment.ssl
   kuzzle.connect()
-};
+}
 
 export const initStoreWithKuzzle = store => {
   kuzzle.off('tokenExpired')
@@ -158,7 +158,7 @@ export const initStoreWithKuzzle = store => {
         case 'Json Web Token Error':
           store.commit(types.SET_TOKEN_VALID, false)
           kuzzle.connect()
-          break;
+          break
       }
     }
   })
@@ -175,7 +175,7 @@ export const initStoreWithKuzzle = store => {
   kuzzle.on('discarded', function(data) {
     store.commit(SET_TOAST, { text: data.message })
   })
-};
+}
 
 // Helper for performSearch
 let getValueAdditionalAttribute = (content, attributePath) => {
@@ -186,7 +186,7 @@ let getValueAdditionalAttribute = (content, attributePath) => {
   }
 
   return content[attribute]
-};
+}
 
 /**
  * Constructor only used for displaying the constructor name in the list
@@ -229,7 +229,7 @@ class Credentials {
 
 export const getMappingDocument = (collection, index) => {
   return kuzzle.collection(collection, index).getMappingPromise()
-};
+}
 
 export const performSearchUsers = (
   collection,
@@ -295,13 +295,13 @@ export const performSearchUsers = (
           })
         })
     })
-};
+}
 
 export const getMappingUsers = () => {
   return kuzzle
     .queryPromise({ controller: 'security', action: 'getUserMapping' }, {})
     .then(res => res.result)
-};
+}
 
 export const updateMappingUsers = newMapping => {
   return kuzzle
@@ -314,7 +314,7 @@ export const updateMappingUsers = newMapping => {
       }
     )
     .then(res => res.result)
-};
+}
 
 export const performSearchProfiles = (filters = {}, pagination = {}) => {
   return kuzzle.security
@@ -332,13 +332,13 @@ export const performSearchProfiles = (filters = {}, pagination = {}) => {
 
       return { documents: profiles, total: result.total }
     })
-};
+}
 
 export const getMappingProfiles = () => {
   return kuzzle
     .queryPromise({ controller: 'security', action: 'getProfileMapping' }, {})
     .then(res => res.result)
-};
+}
 
 export const performSearchRoles = (controllers = {}, pagination = {}) => {
   return kuzzle.security
@@ -356,13 +356,13 @@ export const performSearchRoles = (controllers = {}, pagination = {}) => {
 
       return { documents: roles, total: result.total }
     })
-};
+}
 
 export const getMappingRoles = () => {
   return kuzzle
     .queryPromise({ controller: 'security', action: 'getRoleMapping' }, {})
     .then(res => res.result)
-};
+}
 
 export const performDeleteDocuments = (index, collection, ids) => {
   if (
@@ -380,7 +380,7 @@ export const performDeleteDocuments = (index, collection, ids) => {
     { body: { ids } },
     { refresh: 'wait_for' }
   )
-};
+}
 
 export const performDeleteUsers = (index, collection, ids) => {
   if (!ids || !Array.isArray(ids) || ids.length === 0) {
@@ -398,7 +398,7 @@ export const performDeleteUsers = (index, collection, ids) => {
         {}
       )
     )
-};
+}
 
 export const performDeleteRoles = ids => {
   if (!ids || !Array.isArray(ids) || ids.length === 0) {
@@ -416,7 +416,7 @@ export const performDeleteRoles = ids => {
         {}
       )
     )
-};
+}
 
 export const performDeleteProfiles = (index, collection, ids) => {
   if (!ids || !Array.isArray(ids) || ids.length === 0) {
@@ -434,4 +434,4 @@ export const performDeleteProfiles = (index, collection, ids) => {
         {}
       )
     )
-};
+}
