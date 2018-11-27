@@ -5,7 +5,7 @@ set -e
 
 # build
 npm run build
-echo %s > force.txt
+echo  `date +%s` > force.txt
 
 # navigate into the build output directory
 cd dist
@@ -23,5 +23,7 @@ git commit -m 'deploy'
 
 # if you are deploying to https://<USERNAME>.github.io/<REPO>
 git push -f git@github.com:adowning/appsync-cli3.git master:gh-pages
-rm force.txt
+
 cd -
+
+rm force.txt
