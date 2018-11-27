@@ -19,7 +19,7 @@ npm run build
 DATE=`date`
 # git init
 git add -A
-git commit -m $DATE
+git commit -m 'yay'
 
 # if you are deploying to https://<USERNAME>.github.io
 # git push -f git@github.com:adowning/adowning.github.io.git master
