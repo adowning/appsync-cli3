@@ -22,10 +22,10 @@ git add -A
 git commit -m 'deploy'
 
 # if you are deploying to https://<USERNAME>.github.io
-# git push -f git@github.com:adowning/adowning.github.io.git master
+git push -f git@github.com:adowning/adowning.github.io.git master
 
 # if you are deploying to https://<USERNAME>.github.io/<REPO>
-git push -f git@github.com:adowning/appsync-cli3.git master:gh-pages
+#git push -f git@github.com:adowning/appsync-cli3.git master:gh-pages
 
 cd -
 
