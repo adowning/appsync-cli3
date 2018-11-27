@@ -1,4 +1,5 @@
 // const path = require('path');
+const fs = require('fs');
 
 module.exports = {
   baseUrl: '/',
@@ -15,8 +16,8 @@ module.exports = {
      https: {
       key: fs.readFileSync('/home/ash/aa/localcerts/server.key'),
       cert: fs.readFileSync('/home/ash/aa/localcerts/server.crt'),
-      ca: fs.readFileSync('/home/ash/localcerts/ca.pem'),
+      ca: fs.readFileSync('/home/ash/aa/localcerts/ca.pem'),
     }
-    disableHostCheck: true
-  }
+  },
+  disableHostCheck: true
 }
