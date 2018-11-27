@@ -18,10 +18,11 @@ Kuzzle.prototype.bluebird = Promise
 // let kuzzle = new Kuzzle('100.25.9.46:7512', {
 //     connect: 'manual',
 // })
-let kuzzle = new Kuzzle('localhost', {
-  connect: 'manual',
-  sslConnection: false
-})
+// let kuzzle = new Kuzzle('localhost', {
+//   connect: 'manual',
+//   sslConnection: false
+// })
+ const kuzzle = new Kuzzle('http', { host: 'localhost', port: 7512 })
 
 window.kuzzle = kuzzle
 export default kuzzle
