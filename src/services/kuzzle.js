@@ -15,8 +15,11 @@ import Kuzzle from 'kuzzle-sdk/dist/kuzzle'
 import Promise from 'bluebird'
 Kuzzle.prototype.bluebird = Promise
 
-let kuzzle = new Kuzzle('100.25.9.46:7512', {
-    connect: 'manual',
+// let kuzzle = new Kuzzle('100.25.9.46:7512', {
+//     connect: 'manual',
+// })
+let kuzzle = new Kuzzle('localhost', {
+    // connect: 'manual',
 })
 
 window.kuzzle = kuzzle
