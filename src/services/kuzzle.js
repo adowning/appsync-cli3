@@ -18,7 +18,7 @@ Kuzzle.prototype.bluebird = Promise
 // let kuzzle = new Kuzzle('100.25.9.46:7512', {
 //     connect: 'manual',
 // })
-let kuzzle = new Kuzzle('100.25.9.46', {
+let kuzzle = new Kuzzle('api.groupandrews.com', {
     // connect: 'manual',
 })
 
