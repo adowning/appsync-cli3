@@ -11,6 +11,7 @@ module.exports = {
   },
   devServer: {
     host: "0.0.0.0",
+    disableHostCheck: true,
     hot: true,    
     https: true,
      https: {
@@ -18,6 +19,5 @@ module.exports = {
       cert: fs.readFileSync('/home/ash/aa/localcerts/server.crt'),
       ca: fs.readFileSync('/home/ash/aa/localcerts/ca.pem'),
     }
-  },
-  disableHostCheck: true
+  } 
 }
