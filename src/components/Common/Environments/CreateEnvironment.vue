@@ -123,7 +123,7 @@ import {
     CREATE_ENVIRONMENT,
 } from '../../../vuex/modules/common/kuzzle/mutation-types'
 
-const useHttps = window.location.protocol === 'https:'
+var useHttps = window.location.protocol === 'https:'
 console.log(useHttps)
 console.log(useHttps)
 console.log(useHttps)
