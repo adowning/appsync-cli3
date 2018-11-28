@@ -125,10 +125,8 @@ import {
 
 var useHttps = window.location.protocol === 'https:'
 console.log(useHttps)
-console.log(useHttps)
-console.log(useHttps)
-console.log(useHttps)
-useHttps = false
+
+// useHttps = false
 
 export default {
     name: 'CreateEnvironment',
@@ -157,8 +155,8 @@ export default {
             environment: {
                 name: 'andrews_dev',
                 deviceId: null,
-                host: 'localhost',
-                port: 7512,
+                host: 'api.groupandrews.com',
+                port: 80,
                 color: DEFAULT_COLOR,
                 ssl: useHttps,
             },
@@ -213,7 +211,7 @@ export default {
             // this.errors.port = (!this.environment.port || typeof this.environment.port !== 'number')
             // Host is required and must be something like 'mydomain.com/toto'
             // this.errors.host = !this.environment.host || /^(http|ws):\/\//.test(this.environment.host);
-            this.environment.host = 'localhost'
+            this.environment.host = 'api.groupandrews.com'
             this.environment.name = 'andrews_dev'
             let _host = this.environment.host.trim()
             let _name = this.environment.name.trim()
@@ -273,9 +271,9 @@ export default {
             this.environment.ssl = this.environments[this.environmentId].ssl
         } else {
             this.environment.name = 'andrews_dev'
-            this.environment.host = 'localhost'
+            this.environment.host = 'api.groupandrews.com'
             this.environment.deviceId = null
-            this.environment.port = 7512
+            this.environment.port = 80
             this.environment.color = DEFAULT_COLOR
             this.environment.ssl = useHttps
         }
