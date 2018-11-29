@@ -1,6 +1,6 @@
 // const { Kuzzle } = require('kuzzle-sdk');
 
-// const kuzzle = new Kuzzle('websocket', { host: 'localhost', port: 7512 });
+// const kuzzle = new Kuzzle('websocket', { host: '4cf0c4c5.ngrok.io', port: 7512 });
 
 // kuzzle
 //   .connect()
@@ -18,13 +18,13 @@ Kuzzle.prototype.bluebird = Promise
 // let kuzzle = new Kuzzle('100.25.9.46:7512', {
 //     connect: 'manual',
 // })
-// let kuzzle = new Kuzzle('localhost', {
+// let kuzzle = new Kuzzle('4cf0c4c5.ngrok.io', {
 //   connect: 'manual',
 //   port: 443,
 //   sslConnection: true
 // })
-//  const kuzzle = new Kuzzle('https', { host: 'localhost', port: 443, sslConnection: true })
- const kuzzle = new Kuzzle('http', { host: 'localhost', port: 7512, sslConnection: true })
+//  const kuzzle = new Kuzzle('https', { host: '4cf0c4c5.ngrok.io', port: 443, sslConnection: true })
+ const kuzzle = new Kuzzle('http', { host: '4cf0c4c5.ngrok.io', port: 443, sslConnection: true })
 // kuzzle
 //   .connect()
 //   .then(() => {
