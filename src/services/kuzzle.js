@@ -20,6 +20,7 @@ Kuzzle.prototype.bluebird = Promise
 // })
 let kuzzle = new Kuzzle('api.groupandrews.com', {
   connect: 'manual',
+  port: 443,
   sslConnection: true
 })
 //  const kuzzle = new Kuzzle('http', { host: 'api.groupandrews.com', port: 80 })

@@ -156,7 +156,7 @@ export default {
                 name: 'andrews_dev',
                 deviceId: null,
                 host: 'api.groupandrews.com',
-                port: 80,
+                 port: 443,
                 color: DEFAULT_COLOR,
                 ssl: useHttps,
             },
@@ -273,7 +273,7 @@ export default {
             this.environment.name = 'andrews_dev'
             this.environment.host = 'api.groupandrews.com'
             this.environment.deviceId = null
-            // this.environment.port = 80
+            this.environment.port = 443
             this.environment.color = DEFAULT_COLOR
             this.environment.ssl = useHttps
         }
