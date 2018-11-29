@@ -24,7 +24,7 @@ Kuzzle.prototype.bluebird = Promise
 //   sslConnection: true
 // })
 //  const kuzzle = new Kuzzle('https', { host: 'app.ashdevtools.com', port: 443, sslConnection: true })
- const kuzzle = new Kuzzle('manual', { host: 'app.ashdevtools.com/ws', port: 443, sslConnection: true })
+ const kuzzle = new Kuzzle('manual', { host: 'app.ashdevtools.com', port: 443, sslConnection: true })
 // kuzzle
 //   .connect()
 //   .then(() => {
