@@ -22,7 +22,7 @@ Kuzzle.prototype.bluebird = Promise
 //   connect: 'manual',
 //   sslConnection: false
 // })
- const kuzzle = new Kuzzle('http', { host: 'api.groupandrews.com', port: 80 })
+ const kuzzle = new Kuzzle('https', { host: 'api.groupandrews.com', port: 80 })
 // kuzzle
 //   .connect()
 //   .then(() => {
