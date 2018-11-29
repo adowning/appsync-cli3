@@ -18,12 +18,12 @@ Kuzzle.prototype.bluebird = Promise
 // let kuzzle = new Kuzzle('100.25.9.46:7512', {
 //     connect: 'manual',
 // })
-// let kuzzle = new Kuzzle('api.groupandrews.com', {
+// let kuzzle = new Kuzzle('4cf0c4c5.ngrok.io', {
 //   connect: 'manual',
 //   port: 443,
 //   sslConnection: true
 // })
- const kuzzle = new Kuzzle('https', { host: 'api.groupandrews.com', port: 443, sslConnection: true })
+ const kuzzle = new Kuzzle('https', { host: '4cf0c4c5.ngrok.io', port: 443, sslConnection: true })
 // kuzzle
 //   .connect()
 //   .then(() => {
