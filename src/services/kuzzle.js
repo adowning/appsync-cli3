@@ -24,14 +24,15 @@ Kuzzle.prototype.bluebird = Promise
 //   sslConnection: true
 // })
 //  const kuzzle = new Kuzzle('https', { host: 'app.ashdevtools.com', port: 443, sslConnection: true })
- const kuzzle = new Kuzzle('manual', { host: 'app.ashdevtools.com', port: 443, sslConnection: true })
-kuzzle
-  .connect()
-  .then(() => {
-    // You are now connected to your Kuzzle instance.
-    return kuzzle.server.now()
-  })
-  .then(serverTime => console.log(serverTime))
-  .catch(error => console.error(error))
+const kuzzle = new Kuzzle('websocket', { host: 'app.ashdevtools.com', port: 443, sslConnection: true })
+
+// kuzzle
+//   .connect()
+//   .then(() => {
+//     // You are now connected to your Kuzzle instance.
+//     return kuzzle.server.now()
+//   })
+//   .then(serverTime => console.log(serverTime))
+//   .catch(error => console.error(error))
 window.kuzzle = kuzzle
 export default kuzzle
