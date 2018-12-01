@@ -6,7 +6,7 @@ public class Constants {
     }
 
     // Root page
-        public static String WEBAPP_URL = "https://e0ff0ce9.ngrok.io/#/crew";
+        public static String WEBAPP_URL = "https://localhost/#/crew";
     public static String WEBAPP_HOST = "e0ff0ce9.ngrok.io"; // used for checking Intent-URLs
 
     // User Agent tweaks
