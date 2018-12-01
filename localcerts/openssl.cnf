@@ -223,6 +223,10 @@ keyUsage = nonRepudiation, digitalSignature, keyEncipherment
 
 [ v3_ca ]
 
+subjectAltName = @alt_names
+[alt_names]
+DNS.1 = *.ash.dev
+DNS.2 = ash.dev
 
 # Extensions for a typical CA
 
