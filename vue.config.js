@@ -12,12 +12,13 @@ module.exports = {
     devServer: {
         host: 'localhost',
         disableHostCheck: true,
-        hot: true,
-        // https: true,
-        //  https: {
-        //   key: fs.readFileSync('/home/ash/aa/localcerts/server.key'),
-        //   cert: fs.readFileSync('/home/ash/aa/localcerts/server.crt'),
-        //   ca: fs.readFileSync('/home/ash/aa/localcerts/ca.pem'),
-        // }
+        port: 8085,
+        // hot: true,
+        https: true,
+         https: {
+          key: fs.readFileSync('/home/ash/aa/localcerts/server.key'),
+          cert: fs.readFileSync('/home/ash/aa/localcerts/server.crt'),
+          ca: fs.readFileSync('/home/ash/aa/localcerts/ca.pem'),
+        }
     },
 }
