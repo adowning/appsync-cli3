@@ -215,13 +215,13 @@ authorityKeyIdentifier=keyid,issuer
 # extendedKeyUsage = critical,timeStamping
 
 [ v3_req ]
-x509_extensions = v3_req
+#x509_extensions = v3_req
 [ v3_req ]
 subjectAltName = @alt_names
 [alt_names]
 DNS = xyz.example.com
-basicConstraints = CA:FALSE
-keyUsage = nonRepudiation, digitalSignature, keyEncipherment
+#basicConstraints = CA:FALSE
+#keyUsage = nonRepudiation, digitalSignature, keyEncipherment
 
 [ v3_ca ]
 
