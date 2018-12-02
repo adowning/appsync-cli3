@@ -107,7 +107,7 @@ default_bits		= 2048
 default_keyfile 	= privkey.pem
 distinguished_name	= req_distinguished_name
 attributes		= req_attributes
-x509_extensions	= v3_ca	# The extensions to add to the self signed cert
+x509_extensions	= v3_req	# The extensions to add to the self signed cert
 
 # Passwords for private keys if not present they will be prompted for
 # input_password = secret
@@ -122,7 +122,7 @@ x509_extensions	= v3_ca	# The extensions to add to the self signed cert
 # WARNING: ancient versions of Netscape crash on BMPStrings or UTF8Strings.
 string_mask = utf8only
 
-# req_extensions = v3_req # The extensions to add to a certificate request
+req_extensions = v3_req # The extensions to add to a certificate request
 
 [ req_distinguished_name ]
 countryName			= Country Name (2 letter code)
@@ -215,18 +215,16 @@ authorityKeyIdentifier=keyid,issuer
 # extendedKeyUsage = critical,timeStamping
 
 [ v3_req ]
-x509_extensions = v3_ca
-# Extensions to add to a certificate request
-
+x509_extensions = v3_req
+[ v3_req ]
+subjectAltName = @alt_names
+[alt_names]
+DNS = xyz.example.com
 basicConstraints = CA:FALSE
 keyUsage = nonRepudiation, digitalSignature, keyEncipherment
 
 [ v3_ca ]
 
-subjectAltName = @alt_names
-[alt_names]
-DNS.1 = *.ash.dev
-DNS.2 = ash.dev
 
 # Extensions for a typical CA
 
