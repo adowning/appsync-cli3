@@ -15,10 +15,10 @@ module.exports = {
         port: 8085,
         // hot: true,
         https: true,
-        //  https: {
-        //   key: fs.readFileSync('/home/ash/aa/localcerts/ash.key'),
-        //   cert: fs.readFileSync('/home/ash/aa/localcerts/ash.crt'),
-        //   ca: fs.readFileSync('/home/ash/aa/localcerts/ca.pem'),
-        // }
+         https: {
+          key: fs.readFileSync('/home/ash/aa/localcerts/server.key'),
+          cert: fs.readFileSync('/home/ash/aa/localcerts/server.crt'),
+          ca: fs.readFileSync('/home/ash/aa/localcerts/server_rootCA.pem'),
+        }
     },
 }
