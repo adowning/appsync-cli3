@@ -1,6 +1,6 @@
 // const { Kuzzle } = require('kuzzle-sdk');
 
-// const kuzzle = new Kuzzle('websocket', { host: 'app.ashdevtools.com', port: 7512 });
+// const kuzzle = new Kuzzle('websocket', { host: 'api.groupandrews.com', port: 7512 });
 
 // kuzzle
 //   .connect()
@@ -18,13 +18,13 @@ Kuzzle.prototype.bluebird = Promise
 // let kuzzle = new Kuzzle('100.25.9.46:7512', {
 //     connect: 'manual',
 // })
-// let kuzzle = new Kuzzle('app.ashdevtools.com', {
+// let kuzzle = new Kuzzle('api.groupandrews.com', {
 //   connect: 'manual',
 //   port: 443,
 //   sslConnection: true
 // })
-//  const kuzzle = new Kuzzle('https', { host: 'app.ashdevtools.com', port: 443, sslConnection: true })
-const kuzzle = new Kuzzle('websocket', { host: 'app.ashdevtools.com', port: 443, sslConnection: true })
+//  const kuzzle = new Kuzzle('https', { host: 'api.groupandrews.com', port: 443, sslConnection: true })
+const kuzzle = new Kuzzle('websocket', { host: 'api.groupandrews.com', port: 443, sslConnection: true })
 
 // kuzzle
 //   .connect()
