@@ -16,9 +16,9 @@ module.exports = {
         // hot: true,
         https: true,
          https: {
-          key: fs.readFileSync('/home/ash/aa/localcerts/server.key'),
-          cert: fs.readFileSync('/home/ash/aa/localcerts/server.crt'),
-          ca: fs.readFileSync('/home/ash/aa/localcerts/server_rootCA.pem'),
+          key: fs.readFileSync('/home/ash/aa/localkey.key'),
+          cert: fs.readFileSync('/home/ash/aa/local.crt'),
+        //   ca: fs.readFileSync('/home/ash/aa/localcerts/server_rootCA.pem'),
         }
     },
 }
