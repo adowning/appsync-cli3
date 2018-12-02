@@ -131,7 +131,7 @@ public class WebViewHelper {
                     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
                     @Override
                     public void run() {
-                        if(request.getOrigin().toString().equals("http://ashdevtools.com/")) {
+                        if(request.getOrigin().toString().equals("http://api.groupandrews.com/")) {
                             request.grant(request.getResources());
                         } else {
                             request.deny();

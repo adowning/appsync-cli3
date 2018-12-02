@@ -24,7 +24,9 @@ Kuzzle.prototype.bluebird = Promise
 //   sslConnection: true
 // })
 //  const kuzzle = new Kuzzle('https', { host: 'api.groupandrews.com', port: 443, sslConnection: true })
-const kuzzle = new Kuzzle('websocket', { host: 'api.groupandrews.com', port: 443, sslConnection: true })
+// const kuzzle = new Kuzzle('websocket', { host: 'api.groupandrews.com', port: 443, sslConnection: true })
+// const kuzzle = new Kuzzle('https://localhost:7512', { sslConnection: true })
+const kuzzle = new Kuzzle('api.groupandrews.com', { sslConnection: true })
 
 // kuzzle
 //   .connect()
