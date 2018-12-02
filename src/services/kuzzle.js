@@ -26,7 +26,7 @@ Kuzzle.prototype.bluebird = Promise
 //  const kuzzle = new Kuzzle('https', { host: 'api.ashdevtools.com', port: 443, sslConnection: true })
 // const kuzzle = new Kuzzle('websocket', { host: 'api.ashdevtools.com', port: 443, sslConnection: true })
 // const kuzzle = new Kuzzle('https://localhost:7512', { sslConnection: true })
-const kuzzle = new Kuzzle('api.ashdevtools.com', { sslConnection: true })
+const kuzzle = new Kuzzle('api.ashdevtools.com', { port: 443, sslConnection: true })
 
 // kuzzle
 //   .connect()
